@@ -1,0 +1,6 @@
+{
+    "tinymist.fontPaths": [
+        "${workspaceFolder}/templates/Gleneagles/fonts/Mulish",
+        "${workspaceFolder}/templates/Gleneagles/fonts/Noto_Sans_TC"
+    ]
+}
