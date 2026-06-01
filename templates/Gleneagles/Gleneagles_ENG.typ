@@ -4,6 +4,7 @@
 #import "sections/table-of-contents/table-of-contents.typ": table-of-contents
 #import "sections/report-introduction/report-introduction.typ": report-introduction
 #import "sections/health-conditions-overview/health-conditions-overview.typ": health-conditions-overview
+#import "sections/analysis-results-of-microbiome/analysis-results-of-microbiome.typ": analysis-results-of-microbiome
 #import "sections/references.typ": references
 
 #set document(
@@ -11,7 +12,7 @@
   author: "GUTolution Ltd.",
 )
 
-#let report = (
+#let report = json("reference/NCHAV9190_Gleneagles_Report.json") + (
   ("user-name", "Ng Yuk Lin"),
   (
     "date",
@@ -21,7 +22,6 @@
       day: 20,
     ),
   ),
-  ("id", "REAG0982"),
   ("sex", "Female"),
   (
     "date-of-birth",
@@ -41,7 +41,6 @@
       day: 13,
     ),
   ),
-  ("overall-health", 1),
   ("testing-item", "NGS Gut Microbiome Health Screening Test"),
   (
     "sections",
@@ -70,7 +69,7 @@
 
 #show: body-style
 
-#let sections = (report-introduction, health-conditions-overview)
+#let sections = (report-introduction, health-conditions-overview, analysis-results-of-microbiome)
 
 #counter(heading).update(1)
 #for (i, section) in report.sections.enumerate() {

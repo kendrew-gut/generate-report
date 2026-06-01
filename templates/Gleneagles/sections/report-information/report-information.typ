@@ -27,7 +27,7 @@
     }
     table(
       columns: (40%, 60%),
-      [Sample ID], report.id,
+      [Sample ID], report.sample_id,
       [User Name], report.user-name,
       [Sex], report.sex,
       [Date of Birth], report.date-of-birth.display(date-format),

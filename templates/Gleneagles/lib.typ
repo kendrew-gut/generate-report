@@ -100,63 +100,89 @@
 
 #let bad-excellent = 1
 #let excellent-bad = -1
-#let default-colors = ("CF887C", "987AAB", "7C91A6", "EBC1A8", "A6BAAF")
-#let generic-caption = (
+#let bad-excellent-colors = ("CF887C", "987AAB", "7C91A6", "EBC1A8", "A6BAAF")
+#let deficient-abundant-colors = ("987AAB", "7C91A6", "A6BAAF", "EBC1A8", "CF887C")
+#let bad-excellent-caption = (
   (("en", "Bad"), ("zh_hk", "很差")).to-dict(),
   (("en", "Fair"), ("zh_hk", "較差")).to-dict(),
   (("en", "Average"), ("zh_hk", "中等")).to-dict(),
   (("en", "Good"), ("zh_hk", "良好")).to-dict(),
-  (("en", "Excellent"), ("zh_hk", "優秀")).to-dict()
+  (("en", "Excellent"), ("zh_hk", "優秀")).to-dict(),
+)
+#let deficient-abundant-caption = (
+  (("en", "Highly Deficient"), ("zh_hk", "嚴重缺乏")).to-dict(),
+  (("en", "Slightly Deficient"), ("zh_hk", "輕微缺乏")).to-dict(),
+  (("en", "Balanced"), ("zh_hk", "平衡")).to-dict(),
+  (("en", "Slightly Overabundant"), ("zh_hk", "輕微過剩")).to-dict(),
+  (("en", "Highly Overabundant"), ("zh_hk", "嚴重過剩")).to-dict(),
 )
 #let slider(
   value: 0,
   semantics: bad-excellent,
-  color-scheme: default-colors,
+  color-scheme: bad-excellent-colors,
   caption-scheme: none,
+  caption-show-zh-hk: false,
+  graphics-scheme: none,
   width: 100%,
+  bar-height: 12pt,
+  arrow-width: auto,
 ) = context {
-  assert(0 <= value and value < 5)
-  assert(color-scheme.len() == 5)
-  assert(caption-scheme == none or caption-scheme.len() == 5)
+  let len = color-scheme.len()
+  assert(len > 0)
+  assert(value == none or (0 <= value and value < len))
+  assert(caption-scheme == none or caption-scheme.len() == len)
+  assert(graphics-scheme == none or graphics-scheme.len() == len)
 
   let bar-colour(value, semantics: bad-excellent) = if semantics == bad-excellent {
     rgb(color-scheme.at(value))
   } else {
-    bar-colour(4 - value)
+    bar-colour(len - 1 - value)
   }
-  let caption(value, semantics: bad-excellent) = if caption-scheme == none { "" } else {
+
+  let caption(this-value, semantics: bad-excellent) = if caption-scheme != none {
+    set text(size: 14pt, fill: bar-colour(this-value, semantics: semantics), weight: "extrabold")
     if semantics == bad-excellent {
-      caption-scheme.at(value).en
+      if caption-show-zh-hk {
+        [#set par(leading: 0.4em)
+          #caption-scheme.at(this-value).zh_hk\
+          #text(size: 10pt, caption-scheme.at(this-value).en)]
+      } else {
+        [#caption-scheme.at(this-value).en]
+      }
     } else {
-      caption(4 - value)
+      caption(len - 1 - this-value)
     }
   }
-  let arrow-down = image("images/arrow-down.png")
+
+  let arrow-down = image("images/arrow-down.png", width: arrow-width)
   let slider-slice(this-value) = stack(
-    align(center, if this-value == value { arrow-down } else { box(height: measure(arrow-down).height) }),
+    align(center, if graphics-scheme != none { graphics-scheme.at(this-value) }),
+    align(center, if this-value == value { arrow-down } else {
+      if value != none { box(height: measure(arrow-down).height) }
+    }),
     box(
       width: 100%,
-      height: 12pt,
-      radius: (left: if this-value == 0 { 50% } else { 0% }, right: if this-value == 4 { 50% } else { 0% }),
+      height: bar-height,
+      radius: (left: if this-value == 0 { 50% } else { 0% }, right: if this-value == len - 1 { 50% } else { 0% }),
       fill: bar-colour(this-value, semantics: semantics),
     ),
-    v(2em),
-    align(center, text(size: 16pt, fill: bar-colour(this-value, semantics: semantics), weight: "bold", caption(
-      this-value,
-      semantics: semantics,
-    ))),
+    ..if caption-scheme != none {
+      (
+        v(1.5em),
+        align(center, caption(
+          this-value,
+          semantics: semantics,
+        )),
+      )
+    },
   )
 
   box(width: width, table(
-    columns: range(5).map(_ => 1fr),
+    columns: range(len).map(_ => 1fr),
     stroke: none,
     column-gutter: 2pt,
     inset: 0pt,
-    slider-slice(0),
-    slider-slice(1),
-    slider-slice(2),
-    slider-slice(3),
-    slider-slice(4)
+    ..range(len).map(i => slider-slice(i))
   ))
 }
 

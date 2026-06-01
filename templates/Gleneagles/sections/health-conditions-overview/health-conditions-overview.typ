@@ -13,14 +13,14 @@
     #section-heading[#section.zh_hk\ #section.en]
     #v(1.5cm)
     #align(center, slider(
-      value: report.overall-health,
-      caption-scheme: generic-caption,
+      value: report.health_condition_overview,
+      caption-scheme: bad-excellent-caption,
       width: 380pt,
       semantics: bad-excellent,
     ))
     #v(1cm)
     #align(center, text(weight: "bold", size: 17.5pt)[
-      Your overall health level: #text(fill: rgb(default-colors.at(report.overall-health)), generic-caption.at(report.overall-health).en)
+      Your overall health level: #text(fill: rgb(bad-excellent-colors.at(report.health_condition_overview)), bad-excellent-caption.at(report.health_condition_overview).en)
     ])
 
     We utilize advanced artificial intelligence technology for analysis, assessing your overall health based on the specific composition of bacteria in your gut microbiome. By analyzing and calculating the diversity and abundance of key probiotic strains, our AI model evaluates the balance of your gut ecosystem and correlates it with broader physical and mental health impacts.
@@ -29,7 +29,7 @@
   ]
 
   #let health-level-bar(i) = table(
-    fill: rgb(default-colors.at(i)).lighten(80%),
+    fill: rgb(bad-excellent-colors.at(i)).lighten(80%),
     columns: (1.8cm, auto, 7em, 1fr),
     stroke: none,
     column-gutter: 0pt,
@@ -42,10 +42,14 @@
           text(size: 16.7pt, weight: "extrabold", fill: white)[#(i + 1)],
         ),
       ))]),
-    align(center + horizon, pad(x: 1em, text(fill: rgb(default-colors.at(i)), weight: "extrabold", size: 14pt)[#set par(
+    align(center + horizon, pad(x: 1em, text(
+      fill: rgb(bad-excellent-colors.at(i)),
+      weight: "extrabold",
+      size: 14pt,
+    )[#set par(
         leading: 0.3em,
       )
-      #generic-caption.at(i).zh_hk\ #generic-caption.at(i).en])),
+      #bad-excellent-caption.at(i).zh_hk\ #bad-excellent-caption.at(i).en])),
     align(horizon, pad(
       right: 1em,
       y: 0.3em,
