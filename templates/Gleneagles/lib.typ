@@ -1,9 +1,13 @@
-#import "@preview/hydra:0.6.2": hydra
+#import "@preview/hydra:0.6.2": hydra, anchor
 
 #let date-format = "[day]/[month]/[year]"
 #let neutral = rgb("#B0BDC1")
 #let primary = rgb("#44b6bd")
 #let secondary = rgb("#3b88c3")
+#let destructive = rgb("#CF887C")
+#let on-destructive = rgb("#6F2013")
+#let constructive = rgb("#A6BAAF")
+#let on-constructive = rgb("#415B4D")
 
 #let subtitle(body) = text(body, weight: "extrabold", size: 16pt, fill: neutral.darken(45%))
 #let header-text(body) = text(body, weight: "extrabold", size: 12pt, fill: primary.darken(20%).transparentize(15%))
@@ -13,7 +17,7 @@
   if is-numbered-section {
     counter(heading).step()
   }
-  [= #if is-numbered-section [#counter(heading).get().first()\.] else [] #underline(body)]
+  underline(offset: 0.5em)[= #if is-numbered-section [#counter(heading).get().first()\.] else [] #body]
 })
 
 #let leftpad(len, pad, s) = {
@@ -49,6 +53,8 @@
   }
 }
 
+#let to-date(s) = toml(bytes("date = " + s)).date
+
 #let warn(body) = page(align(center, box(
   width: 200pt,
   fill: red.lighten(50%),
@@ -69,9 +75,9 @@
       NGS 腸道微生態檢測\
       NGS Gut Microbiome Health Screening Test
     ]))
-    #header-text[User Name |] #h(1em)#report.user-name #h(4em) #header-text[Report Date |] #h(
+    #header-text[User Name |] #h(1em)#report.report_information.user_full_name #h(4em) #header-text[Report Date |] #h(
       1em,
-    )#report.date.display(
+    )#report.report_information.date_of_report.display(
       date-format,
     )
     #place(bottom, box(
@@ -85,8 +91,9 @@
         line(stroke: (paint: primary, dash: "dotted", thickness: 2pt), length: 100%),
         pad(x: 15pt, {
           let heading-components = hydra(1, skip-starting: false, use-last: true)
-          let a = to-string(heading-components)
           if heading-components != none {
+            let heading = to-string(heading-components)
+            // if heading
             longest-alpha-sequence(to-string(heading-components))
           }
         }),
@@ -205,6 +212,7 @@
 #let page-style(report) = {
   let f(it) = {
     set page(
+      header: anchor(),
       background: standard-page-background(report),
       margin: (top: 4cm, x: 2.3cm, bottom: 1cm),
     )
@@ -221,3 +229,5 @@
 
   body
 }
+
+#let i18n = json("i18n.json")

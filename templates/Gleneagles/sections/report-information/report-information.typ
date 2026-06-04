@@ -25,16 +25,17 @@
         y: 10pt,
       )
     }
+    v(1em)
     table(
       columns: (40%, 60%),
       [Sample ID], report.sample_id,
-      [User Name], report.user-name,
-      [Sex], report.sex,
-      [Date of Birth], report.date-of-birth.display(date-format),
-      [Sample Mass ($mu g$)], [#report.sample-mass],
-      [Sample Quality\ (A/B/C/NA)], report.sample-quality,
-      [Report Date], report.date.display(date-format),
-      [Testing Date], report.testing-date.display(date-format),
+      [User Name], report.report_information.user_full_name,
+      [Sex], report.report_information.gender,
+      [Date of Birth], report.report_information.date_of_birth.display(date-format),
+      [Sample Mass ($mu g$)], [#report.report_information.sample_total_mass_ug],
+      [Sample Quality\ (A/B/C/NA)], report.report_information.sample_quality_level,
+      [Report Date], report.report_information.date_of_report.display(date-format),
+      [Testing Date], report.report_information.date_collected.display(date-format),
       [Testing Item], report.testing-item,
     )
   }

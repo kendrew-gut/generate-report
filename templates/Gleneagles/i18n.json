@@ -1,0 +1,176 @@
+{
+  "Report Information": {
+    "zh_hk": "報告資料"
+  },
+  "Report Introduction": {
+    "zh_hk": "報告介紹"
+  },
+  "Probiotics": {
+    "zh_hk": "益生菌"
+  },
+  "Commensal Bacteria": {
+    "zh_hk": "共生菌"
+  },
+  "Harmful Bacteria": {
+    "zh_hk": "有害菌"
+  },
+  "Bad": {
+    "zh_hk": "很差"
+  },
+  "Fair": {
+    "zh_hk": "較差"
+  },
+  "Average": {
+    "zh_hk": "中等"
+  },
+  "Good": {
+    "zh_hk": "良好"
+  },
+  "Excellent": {
+    "zh_hk": "優秀"
+  },
+  "Highly Deficient": {
+    "zh_hk": "嚴重缺乏"
+  },
+  "Slightly Deficient": {
+    "zh_hk": "輕微缺乏"
+  },
+  "Balanced": {
+    "zh_hk": "平衡"
+  },
+  "Slightly Overabundant": {
+    "zh_hk": "輕微過剩"
+  },
+  "Highly Overabundant": {
+    "zh_hk": "嚴重過剩"
+  },
+  "Elevated Risk": {
+    "zh_hk": "較高風險"
+  },
+  "Baseline Risk": {
+    "zh_hk": "正常風險"
+  },
+  "Bifidobacterium longum": {
+    "zh_hk": "長雙歧桿菌"
+  },
+  "Lactiplantibacillus plantarum": {
+    "zh_hk": "植物乳桿菌"
+  },
+  "Lactobacillus acidophilus": {
+    "zh_hk": "嗜酸乳桿菌"
+  },
+  "Lacticaseibacillus rhamnosus": {
+    "zh_hk": "鼠李糖乳桿菌"
+  },
+  "Lactobacillus fermentum": {
+    "zh_hk": "發酵乳桿菌"
+  },
+  "Lactobacillus reuteri": {
+    "zh_hk": "洛德乳桿菌"
+  },
+  "Bifidobacterium animalis": {
+    "zh_hk": "動物雙歧桿菌"
+  },
+  "Enterocloster bolteae": {
+    "zh_hk": "波爾特氏腸道梭狀菌"
+  },
+  "Escherichia coli": {
+    "zh_hk": "大腸桿菌"
+  },
+  "Klebsiella pneumoniae": {
+    "zh_hk": "肺炎克雷伯桿菌"
+  },
+  "Shigella flexneri": {
+    "zh_hk": "弗氏志賀氏菌"
+  },
+  "Ruminococcus gnavus": {
+    "zh_hk": "活潑瘤胃球菌"
+  },
+  "Alistipes onderdonkii": {
+    "zh_hk": "奧氏另枝菌"
+  },
+  "Bacteroides cellulosilyticus": {
+    "zh_hk": "溶纖維擬桿菌"
+  },
+  "Bacteroides fragilis": {
+    "zh_hk": "脆弱擬桿菌"
+  },
+  "Bacteroides ovatus": {
+    "zh_hk": "卵形擬桿菌"
+  },
+  "Bacteroides vulgatus": {
+    "zh_hk": "多形擬桿菌"
+  },
+  "Bacteroides uniformis": {
+    "zh_hk": "單形擬桿菌"
+  },
+  "Bacteroides xylanisolvens": {
+    "zh_hk": "溶木聚糖擬桿菌"
+  },
+  "Lachnospira eligens": {
+    "zh_hk": "挑剔毛螺菌"
+  },
+  "Roseburia intestinalis": {
+    "zh_hk": "腸道羅斯氏菌"
+  },
+  "Parabacteroides distasonis": {
+    "zh_hk": "迪斯塔森副擬桿菌"
+  },
+  "Bacteroides dorei": {
+    "zh_hk": "多氏擬桿菌"
+  },
+  "Bacteroides eggerthii": {
+    "zh_hk": "埃氏擬桿菌"
+  },
+  "Phascolarctobacterium faecium": {
+    "zh_hk": "糞考拉桿菌"
+  },
+  "Bacteroides thetaiotaomicron": {
+    "zh_hk": "細菌擬桿菌"
+  },
+  "Faecalibacterium prausnitzii": {
+    "zh_hk": "直腸無桿菌"
+  },
+  "Akkermansia muciniphila": {
+    "zh_hk": "嗜黏蛋白阿克曼菌"
+  },
+  "Ruminococcus torques": {
+    "zh_hk": "托克斯瘤胃球菌"
+  },
+  "Collinsella aerofaciens": {
+    "zh_hk": "產氣柯林斯菌"
+  },
+  "Megamonas funiformis": {
+    "zh_hk": "單形巨單胞菌"
+  },
+  "Gut Health": {
+    "zh_hk": "腸道健康"
+  },
+  "Metabolism": {
+    "zh_hk": "代謝水平"
+  },
+  "Mental Health": {
+    "zh_hk": "精神健康"
+  },
+  "Cognition": {
+    "zh_hk": "認知功能"
+  },
+  "Autoimmunity": {
+    "zh_hk": "自體免疫"
+  },
+  "Gastrointestinal Disease": {
+    "zh_hk": "胃腸道疾病"
+  },
+  "Irritable Bowel Syndrome - Constipation": {
+    "zh_hk": "大腸激躁症 - 便祕型"
+  },
+  "Irritable Bowel Syndrome - Diarrhea": {
+    "zh_hk": "大腸激躁症 - 腹瀉型"
+  },
+  "Inflammatory Bowel Disease": {
+    "zh_hk": "炎症性腸病"
+  },
+  "Colorectal Cancer": {
+    "zh_hk": "大腸癌風險"
+  }
+}

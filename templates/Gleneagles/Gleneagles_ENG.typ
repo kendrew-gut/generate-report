@@ -5,6 +5,7 @@
 #import "sections/report-introduction/report-introduction.typ": report-introduction
 #import "sections/health-conditions-overview/health-conditions-overview.typ": health-conditions-overview
 #import "sections/analysis-results-of-microbiome/analysis-results-of-microbiome.typ": analysis-results-of-microbiome
+#import "sections/disease-risks-assessment/disease-risks-assessment.typ": disease-risks-assessment
 #import "sections/references.typ": references
 
 #set document(
@@ -12,48 +13,28 @@
   author: "GUTolution Ltd.",
 )
 
-#let report = json("reference/NCHAV9190_Gleneagles_Report.json") + (
-  ("user-name", "Ng Yuk Lin"),
-  (
-    "date",
-    datetime(
-      year: 2026,
-      month: 4,
-      day: 20,
-    ),
-  ),
-  ("sex", "Female"),
-  (
-    "date-of-birth",
-    datetime(
-      year: 1865,
-      month: 4,
-      day: 14,
-    ),
-  ),
-  ("sample-mass", 3.14159265),
-  ("sample-quality", "A"),
-  (
-    "testing-date",
-    datetime(
-      year: 2026,
-      month: 4,
-      day: 13,
-    ),
-  ),
-  ("testing-item", "NGS Gut Microbiome Health Screening Test"),
-  (
-    "sections",
-    (
-      (("en", "Report Introduction"), ("zh_hk", "報告介紹")).to-dict(),
-      (("en", "Health Conditions Overview"), ("zh_hk", "健康情況總覽")).to-dict(),
-      (("en", "Analysis Results of Microbiome"), ("zh_hk", "微生物組分析結果")).to-dict(),
-      (("en", "Disease Risks Assessment"), ("zh_hk", "疾病風險評估")).to-dict(),
-      (("en", "Personalised Nutrition Guidelines"), ("zh_hk", "個人化營養膳食指南")).to-dict(),
-      (("en", "Appendix"), ("zh_hk", "附錄")).to-dict(),
-    ),
-  ),
-).to-dict()
+#let report = (
+  json("reference/NCHAV9190_Gleneagles_Report.json")
+    + (
+      ("testing-item", "NGS Gut Microbiome Health Screening Test"),
+      (
+        "sections",
+        (
+          (("en", "Report Introduction"), ("zh_hk", "報告介紹")).to-dict(),
+          (("en", "Health Conditions Overview"), ("zh_hk", "健康情況總覽")).to-dict(),
+          (("en", "Analysis Results of Microbiome"), ("zh_hk", "微生物組分析結果")).to-dict(),
+          (("en", "Disease Risks Assessment"), ("zh_hk", "疾病風險評估")).to-dict(),
+          (("en", "Personalised Nutrition Guidelines"), ("zh_hk", "個人化營養膳食指南")).to-dict(),
+          (("en", "Appendix"), ("zh_hk", "附錄")).to-dict(),
+        ),
+      ),
+    ).to-dict()
+)
+#{
+  report.report_information.date_of_report = to-date(report.report_information.date_of_report)
+  report.report_information.date_collected = to-date(report.report_information.date_collected)
+  report.report_information.date_of_birth = to-date(report.report_information.date_of_birth)
+}
 
 #show: style
 
@@ -69,7 +50,12 @@
 
 #show: body-style
 
-#let sections = (report-introduction, health-conditions-overview, analysis-results-of-microbiome)
+#let sections = (
+  report-introduction,
+  health-conditions-overview,
+  analysis-results-of-microbiome,
+  disease-risks-assessment,
+)
 
 #counter(heading).update(1)
 #for (i, section) in report.sections.enumerate() {

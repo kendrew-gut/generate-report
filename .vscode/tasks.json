@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Update translations",
+            "type": "shell",
+            "command": "python3 ${workspaceFolder}/i18n.py",
+            "problemMatcher": []
+        }
+    ]
+}

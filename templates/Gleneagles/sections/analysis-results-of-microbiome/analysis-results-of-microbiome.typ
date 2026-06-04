@@ -52,7 +52,7 @@
         pad(left: 2em, align(horizon)[#prefix #(i + 1)]),
         pad(y: 4pt, align(horizon)[
           #set par(leading: 0.3em)
-          #text(size: 11pt, bacterium.name)\ #text(size: 10pt, bacterium.name)]),
+          #text(size: 11pt, i18n.at(bacterium.name).zh_hk)\ #text(size: 10pt, bacterium.name)]),
         align(center + horizon, pad(left: 1em, right: 2em, top: 1pt, bottom: 8pt, slider(
           value: bacterium.level - 1,
           color-scheme: deficient-abundant-colors,

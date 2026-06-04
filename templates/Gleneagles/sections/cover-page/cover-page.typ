@@ -17,11 +17,11 @@
 
         Report Date:
         #colbreak()
-        #report.user-name
+        #report.report_information.user_full_name
 
-        #report.sample_id
+        #report.report_information.sample_id
 
-        #report.date.display(date-format)
+        #report.report_information.date_of_report.display(date-format)
       ]
     ]
   ]
