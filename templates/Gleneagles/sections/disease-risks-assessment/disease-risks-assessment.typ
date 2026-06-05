@@ -3,20 +3,6 @@
 #let disease-risks-assessment(section, report) = page(margin: (bottom: 0cm))[
   #section-heading[#section.zh_hk\ #section.en]
 
-  #let baseline = 0
-  #let elevated = 1
-  #let risk-pill(risk: baseline) = box(
-    radius: 50%,
-    fill: if risk == baseline { constructive } else { destructive },
-    inset: 1em,
-    align(center + horizon, text(
-      fill: if risk == baseline { on-constructive } else { on-destructive },
-      weight: "bold",
-    )[#(if risk == elevated { "較高風險" } else { "正常風險" })\ #(
-        if risk == elevated { "Elevated Risk" } else { "Baseline Risk" }
-      )]),
-  )
-
   #let disease-group-img = (
     "IBS - Diarrhea": "images/ibs-diarrhea.png",
     "IBS - Constipation": "images/ibs-constipation.png",
@@ -35,38 +21,32 @@
   )
   #let disease-group-summary(disease-group) = {
     let num-constituents = disease-group.diseases.len()
-    grid(
-      inset: 0pt,
-      pad(x: 1em, stack(
-        stack(dir: ltr, spacing: 1em, ..for constituent in disease-group.diseases {
-          (
-            rect(width: 6em, stroke: none, stack(
-              image(disease-group-img.at(constituent)),
-              v(0.5em),
-              text(fill: secondary.darken(30%), weight: "bold", size: 12.5pt)[
-                #set par(leading: 0.4em, justify: false)
-                #constituent
-              ],
-            )),
-          )
-        }),
-        pad(top: 0.5em, text(weight: "bold")[Your #disease-group.name Risk:]),
-        pad(top: 0.7em, risk-pill(risk: disease-group.risk)),
-      )),
-    )
+
+    align(center, stack(
+      box(height: 7.5em, align(top, stack(dir: ltr, spacing: 1em, ..for constituent in disease-group.diseases {
+        (
+          rect(width: 6em, stroke: none, stack(
+            image(disease-group-img.at(constituent)),
+            v(0.5em),
+            text(fill: secondary.darken(30%), weight: "bold", size: 12.5pt)[
+              #set par(leading: 0.4em, justify: false)
+              #constituent
+            ],
+          )),
+        )
+      }))),
+      pad(top: 0.5em, text(weight: "bold")[Your #disease-group.name Risk:]),
+      pad(top: 0.7em, risk-pill(risk: disease-group.risk)),
+    ))
   }
 
   #let disease-domain-summary(
     disease-domain,
-  ) = box(
-    fill: neutral.lighten(70%),
-    width: 100%,
-    inset: 1em,
-  )[
+  ) = pad(1.5em)[
     #let name = (en: disease-domain.name, zh_hk: i18n.at(disease-domain.name).zh_hk)
     #text(fill: secondary.darken(30%), weight: "extrabold", size: 16pt)[#name.zh_hk #name.en]
 
-    #align(center, stack(
+    #box(width: 100%, height: 13.5em, align(center + bottom, stack(
       dir: ltr,
 
       ..for group in disease-domain.details.disease_groups {
@@ -76,21 +56,53 @@
           ),
         )
       },
-    ))
+    )))
   ]
 
   #grid(
     columns: 2,
     gutter: 0.5em,
-    ..for (i, domain) in report.disease_domains.enumerate() {
+    grid.cell(
+      colspan: 2,
+      fill: neutral.lighten(70%),
+      pad(1em)[
+        #let disease-domain = report.disease_domains.at(0)
+        #let name = (en: disease-domain.name, zh_hk: i18n.at(disease-domain.name).zh_hk)
+        #pad(text(fill: secondary.darken(30%), weight: "extrabold", size: 16pt)[#name.zh_hk #name.en])
+
+        #align(left, stack(
+          dir: ltr,
+          spacing: 6.3em,
+          ..for group in disease-domain.details.disease_groups {
+            let num-constituents = group.diseases.len()
+            (
+              align(left, stack(
+                align(center, box(height: 7.5em, align(top, stack(dir: ltr, spacing: 1em, ..for constituent in group.diseases {
+                  (
+                    rect(width: 6em, stroke: none, stack(
+                      image(disease-group-img.at(constituent)),
+                      v(0.5em),
+                      text(fill: secondary.darken(30%), weight: "bold", size: 12.5pt)[
+                        #set par(leading: 0.4em, justify: false)
+                        #constituent
+                      ],
+                    )),
+                  )
+                })))),
+                align(center, pad(top: 0.5em, text(weight: "bold")[Your #group.name Risk:])),
+                align(center, pad(top: 0.7em, risk-pill(risk: group.risk))),
+              )),
+            )
+          },
+        ))
+      ],
+    ),
+    ..for (i, domain) in report.disease_domains.enumerate().slice(1) {
       (
         grid.cell(
           fill: neutral.lighten(70%),
-          colspan: if i == 0 { 2 } else { 1 },
-          box(
-            disease-domain-summary(
-              domain,
-            ),
+          disease-domain-summary(
+            domain,
           ),
         ),
       )
@@ -139,14 +151,14 @@
         pad(left: 0.7em, top: 0.7em, par(leading: 0.4em, text(
           size: 11pt,
         )[*#id - #(i18n.at(bacteria.name).zh_hk)\ #bacteria.name*])),
-        align(top + end, box(fill: rgb(deficient-abundant-colors.at(bacteria.level - 1)), width: 28%, pad(
+        align(top + end, pad(0.7pt, box(fill: rgb(deficient-abundant-colors.at(bacteria.level - 1)), width: 28%, pad(
           0.45em,
           align(center, par(leading: 0.3em, justify: false, text(
             size: 9pt,
             weight: "bold",
             fill: white,
           )[#deficient-abundant-caption.at(bacteria.level - 1).en])),
-        ))),
+        )))),
       ),
       pad(0.7em, text(size: 9pt, bacteria-effect)),
     ),

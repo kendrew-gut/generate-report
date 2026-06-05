@@ -5,7 +5,7 @@
     table.cell(line(angle: 90deg, stroke: 8pt + primary.darken(20%), length: 50pt)),
     table.cell(text(size: 42pt, weight: "black", leftpad(2, "0", i))),
     table.cell(text(fill: secondary.darken(20%), size: 16pt, weight: "bold")[#section.zh_hk\ #section.en]),
-    table.cell(text(fill: secondary.darken(20%), size: 17pt, weight: "extrabold")[#page]),
+    table.cell(align(end, text(fill: secondary.darken(20%), size: 17pt, weight: "extrabold")[#page])),
   )
 
   #place(left, dx: -200pt, image("images/anatomy.png"))
@@ -17,7 +17,7 @@
     link(it.element.location(), pad(left: 4pt, table(
       align: left + horizon,
       stroke: none,
-      columns: (20pt, 70pt, 270pt, 10pt),
+      columns: (20pt, 70pt, 270pt, 33pt),
       row-gutter: 8pt,
       ..outline-row(i + 1, report.sections.at(i), page),
     )))

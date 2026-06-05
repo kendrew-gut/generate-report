@@ -19,7 +19,7 @@
         #colbreak()
         #report.report_information.user_full_name
 
-        #report.report_information.sample_id
+        #report.report_information.report_id
 
         #report.report_information.date_of_report.display(date-format)
       ]

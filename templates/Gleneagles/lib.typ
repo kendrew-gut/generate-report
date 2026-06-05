@@ -1,4 +1,4 @@
-#import "@preview/hydra:0.6.2": hydra, anchor
+#import "@preview/hydra:0.6.2": anchor, hydra
 
 #let date-format = "[day]/[month]/[year]"
 #let neutral = rgb("#B0BDC1")
@@ -17,7 +17,7 @@
   if is-numbered-section {
     counter(heading).step()
   }
-  underline(offset: 0.5em)[= #if is-numbered-section [#counter(heading).get().first()\.] else [] #body]
+  underline(offset: 0.5em)[= #if is-numbered-section [#counter(heading).get().first()\.] #body]
 })
 
 #let leftpad(len, pad, s) = {
@@ -193,6 +193,20 @@
   ))
 }
 
+#let baseline = 0
+#let elevated = 1
+#let risk-pill(risk: baseline) = box(
+  radius: 50%,
+  fill: if risk == baseline { constructive } else { destructive },
+  inset: 1em,
+  align(center + horizon, text(
+    fill: if risk == baseline { on-constructive } else { on-destructive },
+    weight: "bold",
+  )[#(if risk == elevated { "較高風險" } else { "正常風險" })\ #(
+      if risk == elevated { "Elevated Risk" } else { "Baseline Risk" }
+    )]),
+)
+
 #let style(body) = {
   show title: set text(fill: neutral.darken(45%), size: 36pt)
   show heading: set text(weight: "extrabold", size: 24pt, fill: primary.darken(20%))
@@ -223,7 +237,7 @@
 }
 
 #let body-style(body) = {
-  set par(justify: true)
+  set par(justify: true, spacing: 1em)
   set page(margin: (x: 1.8cm))
   set text(size: 11pt, hyphenate: false)
 
