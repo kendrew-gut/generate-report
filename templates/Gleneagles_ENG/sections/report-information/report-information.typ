@@ -32,7 +32,7 @@
       [User Name], report.report_information.user_full_name,
       [Sex], report.report_information.gender,
       [Date of Birth], report.report_information.date_of_birth.display(date-format),
-      [Sample Mass ($mu g$)], [#report.report_information.sample_total_mass_ug],
+      [Sample Mass (µg)], [#report.report_information.sample_total_mass_ug],
       [Sample Quality\ (A/B/C/NA)], report.report_information.sample_quality_level,
       [Report Date], report.report_information.date_of_report.display(date-format),
       [Testing Date], report.report_information.date_collected.display(date-format),

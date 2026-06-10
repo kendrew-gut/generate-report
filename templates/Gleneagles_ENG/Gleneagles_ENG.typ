@@ -14,8 +14,9 @@
   author: "GUTolution Ltd.",
 )
 
+#let report-json = sys.inputs.at("report_json", default: "reference/NCHAV9190_Gleneagles_Report.json")
 #let report = (
-  json("reference/NCHAV9190_Gleneagles_Report.json")
+  json(report-json)
     + (
       ("testing-item", "NGS Gut Microbiome Health Screening Test"),
       (

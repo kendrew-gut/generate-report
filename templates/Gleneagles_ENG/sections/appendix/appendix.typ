@@ -66,7 +66,7 @@
 
       Huang, H., Krishnan, H. B., Pham, Q., Yu, L. L., & Wang, T. T. Y. (2016). Soy and Gut Microbiota: Interaction and Implication for Human Health. Journal of Agricultural and Food Chemistry, 64(46), 8695--8709. https://doi.org/10.1021/acs.jafc.6b03725
       )
-    ],
+    ]
   ]
 
   #page[
@@ -98,7 +98,7 @@
       Pang, W., Wang, D., Zuo, Z., Wang, Y., Sun, W., Zhang, N., & Zhang, D. (2022). Kidney Bean Fermented Broth Alleviates Hyperlipidemic by Regulating Serum Metabolites and Gut Microbiota Composition. Nutrients, 14(15), 3202. https://doi.org/10.3390/nu14153202
 
       Pérez-Burillo, S., Navajas-Porras, B., López-Maldonado, A., Hinojosa-Nogueira, D., Pastoriza, S., & Rufián-Henares, J. Á. (2021). Green Tea and Its Relation to Human Gut Microbiome. Molecules, 26(13), 3907. https://doi.org/10.3390/molecules26133907
-    ],
+    ]
   ]
 
   #page[
@@ -128,7 +128,7 @@
       Vendrame, S., Guglielmetti, S., Riso, P., Arioli, S., Klimis-Zacas, D., & Porrini, M. (2011). Six-Week Consumption of a Wild Blueberry Powder Drink Increases Bifidobacteria in the Human Gut. Journal of Agricultural and Food Chemistry, 59(24), 12815--12820. https://doi.org/10.1021/jf2028686
 
       Yang, Q., Lyu, S., Xu, M., Li, S., Du, Z., Liu, X., Shang, X., Yu, Z., Liu, J., & Zhang, T. (2023). Potential Benefits of Egg White Proteins and Their Derived Peptides in the Regulation of the Intestinal Barrier and Gut Microbiota: A Comprehensive Review. Journal of Agricultural and Food Chemistry, 71(36), 13168--13180. https://doi.org/10.1021/acs.jafc.3c03230
-    ],
+    ]
   ]
 
   #page[
@@ -146,8 +146,6 @@
       + The integrity of gut test samples may be affected by a range of factors, including environmental variables, potential contamination during collection or processing, and storage conditions. These variables may impact the accuracy and consistency of test results. Therefore, results should be interpreted with caution, and guidance from a healthcare professional is recommended.
       + Please be aware that research on the gut microbiome is a rapidly advancing field, and knowledge is subject to continuous updates. The machine learning algorithms and baselines used to generate this report may also be regularly updated.
       + Data collected for this report is used for internal purposes only. We assume no liability for any damages or injuries resulting from the use of or reliance on this report or its contents.
-
-
-    ],
+    ]
   ]
 ]

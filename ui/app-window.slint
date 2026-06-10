@@ -1,0 +1,85 @@
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { Select, SelectItem } from "slintcn/components/select.slint";
+import { Label, LabelVariant } from "slintcn/components/label.slint";
+import {
+    Button,
+    ButtonVariant,
+    ButtonSize,
+} from "slintcn/components/button.slint";
+import { ScrollArea } from "slintcn/components/scroll-area.slint";
+import { Icon } from "slintcn/components/icon.slint";
+import { LucidePaths } from "slintcn/components/lucide-paths.slint";
+import { Tokens } from "slintcn/theme/tokens.slint";
+
+struct Input { name: string, path: string}
+
+export component AppWindow inherits Window {
+    title: "Report Generator";
+    property <int> template-index;
+    in property <[SelectItem]> templates;
+    in property <[Input]> inputs;
+    in property <bool> show-success: false;
+    in property <bool> show-failure: false;
+    in property <bool> is-generating: false;
+    callback generate(inputs: [Input], template-index: int);
+    callback select-inputs();
+    callback clear-inputs();
+    callback remove-input(i: int);
+    VerticalBox {
+        Button {
+            text: inputs.length > 0 ? "Clear Inputs" : "Select Inputs";
+            clicked => {
+                if inputs.length > 0 {
+                    root.clear-inputs();
+                } else {
+                    root.select-inputs();
+                }
+            }
+        }
+
+        if inputs.length > 0: ScrollArea {
+            content-height: 100px;
+            height: 30px;
+            VerticalLayout {
+                height: 100px;
+                for input in inputs: Text {
+                    text: input.name;
+                }
+            }
+        }
+        Label {
+            text: "Select Template:";
+            variant: LabelVariant.required;
+        }
+
+        Select {
+            items <=> templates;
+            selected-index <=> template-index;
+        }
+
+        HorizontalBox {
+            alignment: LayoutAlignment.center;
+            VerticalBox {
+                Button {
+                    text: "Generate Report";
+                    disabled: inputs.length <= 0 || root.is-generating;
+                    clicked => {
+                        root.generate(inputs, root.template-index);
+                    }
+                }
+
+                HorizontalBox {
+                    alignment: LayoutAlignment.center;
+                    if show-success: Text {
+                        color: green;
+                        text: "Success";
+                    }
+                    if show-failure: Text {
+                        color: red;
+                        text: "Failure";
+                    }
+                }
+            }
+        }
+    }
+}
