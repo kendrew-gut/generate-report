@@ -14,7 +14,7 @@
   author: "GUTolution Ltd.",
 )
 
-#let report-json = sys.inputs.at("report_json", default: "reference/NCHAV9190_Gleneagles_Report.json")
+#let report-json = sys.inputs.at("report_json", default: "reference/NEUAS2639_Gleneagles_Report.json")
 #let report = (
   json(report-json)
     + (

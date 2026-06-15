@@ -19,6 +19,85 @@
     "Allergy": "images/allergy.png",
     "Eczema": "images/eczema.png",
   )
+
+  #let disease-domains = (
+    (
+      name: "Gut Health",
+      disease-groups: (
+        (
+          name: "Gastrointestinal Disease",
+          risk: report.disease_domains.at("Gastrointestinal Disease"),
+          diseases: (
+            "IBS - Diarrhea",
+            "IBS - Constipation",
+            "IBD",
+          ),
+        ),
+        (
+          name: "Colorectal Cancer",
+          risk: report.disease_domains.at("Colorectal Cancer"),
+          diseases: (
+            "Colorectal Cancer",
+          ),
+        ),
+      ),
+    ),
+    (
+      name: "Metabolism",
+      disease-groups: (
+        (
+          name: "Metabolic Disease",
+          risk: report.disease_domains.at("Metabolism"),
+          diseases: (
+            "Diabetes",
+            "NAFLD",
+            "Hormonal Imbalance",
+          ),
+        ),
+      ),
+    ),
+    (
+      name: "Mental Health",
+      disease-groups: (
+        (
+          name: "Mental Disease",
+          risk: report.disease_domains.at("Metabolism"),
+          diseases: (
+            "Diabetes",
+            "NAFLD",
+            "Hormonal Imbalance",
+          ),
+        ),
+      ),
+    ),
+    (
+      name: "Cognition",
+      disease-groups: (
+        (
+          name: "Cognitive Disease",
+          risk: report.disease_domains.at("Cognition"),
+          diseases: (
+            "Cognitive Impairment",
+            "Alzheimer's Disease",
+          ),
+        ),
+      ),
+    ),
+    (
+      name: "Autoimmunity",
+      disease-groups: (
+        (
+          name: "Autoimmunity Disease",
+          risk: report.disease_domains.at("Autoimmunity"),
+          diseases: (
+            "Allergy",
+            "Eczema",
+          ),
+        ),
+      ),
+    ),
+  )
+
   #let disease-group-summary(disease-group) = {
     let num-constituents = disease-group.diseases.len()
 
@@ -49,7 +128,7 @@
     #box(width: 100%, height: 13.5em, align(center + bottom, stack(
       dir: ltr,
 
-      ..for group in disease-domain.details.disease_groups {
+      ..for group in disease-domain.disease-groups {
         (
           disease-group-summary(
             group,
@@ -66,18 +145,18 @@
       colspan: 2,
       fill: neutral.lighten(70%),
       pad(1em)[
-        #let disease-domain = report.disease_domains.at(0)
-        #let name = (en: disease-domain.name, zh_hk: i18n.at(disease-domain.name).zh_hk)
+        #let name = (en: disease-domains.at(0).name, zh_hk: i18n.at(disease-domains.at(0).name).zh_hk)
         #pad(text(fill: secondary.darken(30%), weight: "extrabold", size: 16pt)[#name.zh_hk #name.en])
 
         #align(left, stack(
           dir: ltr,
           spacing: 6.3em,
-          ..for group in disease-domain.details.disease_groups {
-            let num-constituents = group.diseases.len()
+          ..for group in disease-domains.at(0).disease-groups {
             (
               align(left, stack(
-                align(center, box(height: 7.5em, align(top, stack(dir: ltr, spacing: 1em, ..for constituent in group.diseases {
+                align(center, box(height: 7.5em, align(top, stack(dir: ltr, spacing: 1em, ..for constituent in (
+                  group.diseases
+                ) {
                   (
                     rect(width: 6em, stroke: none, stack(
                       image(disease-group-img.at(constituent)),
@@ -97,7 +176,7 @@
         ))
       ],
     ),
-    ..for (i, domain) in report.disease_domains.enumerate().slice(1) {
+    ..for (i, domain) in disease-domains.enumerate().slice(1) {
       (
         grid.cell(
           fill: neutral.lighten(70%),
@@ -213,11 +292,9 @@
       weight: "bold",
     )[您的胃腸道疾病測試結果\ Your Gastrointestinal Disease Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Gut Health")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Gastrointestinal Disease")
         .risk,
     )),
@@ -249,11 +326,9 @@
       weight: "bold",
     )[您的大腸癌風險測試結果\ Your Colorectal Cancer Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Gut Health")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Colorectal Cancer")
         .risk,
     )),
@@ -330,11 +405,9 @@
       weight: "bold",
     )[您的代謝疾病測試結果\ Your Metabolic Disease Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Metabolism")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Metabolic Disease")
         .risk,
     )),
@@ -432,11 +505,9 @@
       weight: "bold",
     )[您的精神疾病測試結果\ Your Mental Disease Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Mental Health")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Mental Disease")
         .risk,
     )),
@@ -509,11 +580,9 @@
       weight: "bold",
     )[您的認知疾病測試結果\ Your Cognitive Disease Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Cognition")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Cognitive Disease")
         .risk,
     )),
@@ -579,11 +648,9 @@
       weight: "bold",
     )[您的自體免疫疾病測試結果\ Your Autoimmune Disease Risk]),
     grid.cell(align: end, risk-pill(
-      risk: report
-        .disease_domains
+      risk: disease-domains
         .find(it => it.name == "Autoimmunity")
-        .details
-        .disease_groups
+        .disease-groups
         .find(it => it.name == "Autoimmunity Disease")
         .risk,
     )),
