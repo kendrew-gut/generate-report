@@ -17,7 +17,7 @@ use include_dir::{Dir, include_dir};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use rfd::AsyncFileDialog;
 use slint::{Model, ModelRc, SharedString, VecModel, spawn_local};
-use typst::foundations::{Bytes, Dict, IntoValue};
+use typst::{diag::SourceDiagnostic, ecow::EcoVec, foundations::{Bytes, Dict, IntoValue}};
 use typst_as_lib::{TypstEngine, TypstTemplateMainFile};
 
 static TEMPLATES: Dir = include_dir!("$CARGO_MANIFEST_DIR/templates/");
@@ -41,6 +41,15 @@ struct TemplateInput {
 struct GleneaglesTemplateArgs {
     display_logo: bool,
 }
+
+#[derive(Debug, Clone, Hash, PartialEq)]
+struct TypstPdfGenerationError(EcoVec<SourceDiagnostic>);
+impl Display for TypstPdfGenerationError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{:?}", self.0)
+    }
+}
+impl Error for TypstPdfGenerationError {}
 
 slint::include_modules!();
 
@@ -101,13 +110,12 @@ fn build_engine(name: impl AsRef<str>) -> anyhow::Result<TypstEngine<TypstTempla
 fn compile(input: &String, selected_template: impl AsRef<str>, args: Dict, template_display_name: impl AsRef<str>) -> anyhow::Result<()> {
     let selected_template = selected_template.as_ref();
     let template_display_name = template_display_name.as_ref();
-    println!("Reading input json");
+    println!("Reading input json from: {input}");
     let mut reader = BufReader::new(OpenOptions::new().read(true).open(input)?);
     let mut input_json = Vec::new();
     reader.read_to_end(&mut input_json)?;
-    println!("Finished reading input json");
     let input_json = Bytes::new(input_json);
-    println!("Compiling template: {selected_template}");
+    println!("Compiling template: {template_display_name} ({selected_template})");
     match build_engine(&selected_template)?
         .compile_with_input(TemplateInput { input_json, args }.into_dict())
         .output
@@ -141,12 +149,14 @@ fn compile(input: &String, selected_template: impl AsRef<str>, args: Dict, templ
                     println!("Successful!")
                 }
                 Err(err) => {
-                    eprintln!("Error while generating output PDF:\n{:?}", err)
+                    eprintln!("Error while generating output PDF:\n{:?}", err);
+                    Err(TypstPdfGenerationError(err))?;
                 }
             }
         }
         Err(err) => {
-            eprintln!("Error while compiling Gleneagles template:\n{}", err)
+            eprintln!("Error while compiling Gleneagles template:\n{}", err);
+            Err(err)?;
         }
     }
     Ok(())
@@ -208,20 +218,19 @@ fn main() -> anyhow::Result<()> {
                 .iter()
                 .map(|input| input.path.as_str().to_string())
                 .collect::<Vec<_>>();
-            let selected_template = templates()[template_index as usize];
-            println!("Inputs: {inputs:?}, selected template: {selected_template}");
+            let template_display_name = templates()[template_index as usize];
+            println!("Inputs: {inputs:?}, selected template: {template_display_name}");
             thread::spawn({
                 let generate_res = generate_res.clone();
                 move || {
-                    println!("Spawned thread");
                     let res = inputs
                         .par_iter()
-                        .map(|input| match selected_template {
+                        .map(|input| match template_display_name {
                             "Gleneagles_ENG" => compile(
                                 input,
                                 "Gleneagles_ENG",
                                 GleneaglesTemplateArgs { display_logo: true }.into_dict(),
-                                selected_template,
+                                template_display_name,
                             ),
                             "Gleneagles_ENG (white label)" => compile(
                                 input,
@@ -230,7 +239,7 @@ fn main() -> anyhow::Result<()> {
                                     display_logo: false,
                                 }
                                 .into_dict(),
-                                selected_template
+                                template_display_name
                             ),
                             _ => anyhow::Result::Err(anyhow::Error::new(StringError(
                                 "Template not implemented".to_string(),
@@ -255,8 +264,7 @@ fn main() -> anyhow::Result<()> {
                                 tokio::time::sleep(Duration::from_secs(1)).await;
                                 app.set_show_success(false);
                             }
-                            Err(e) => {
-                                eprintln!("{e}");
+                            Err(_) => {
                                 app.set_show_failure(true);
                                 tokio::time::sleep(Duration::from_secs(1)).await;
                                 app.set_show_failure(false);

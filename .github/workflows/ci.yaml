@@ -29,6 +29,10 @@ jobs:
       - name: Add Rust target
         run: rustup target add ${{ matrix.rust_target }}
 
+      - name: Install font support
+        run: sudo apt install -y pkg-config libfreetype6-dev libfontconfig1-dev
+        if: ${{ runner.os == "ubuntu-latest" }}
+
       - name: Build (release)
         run: cargo build --release --target ${{ matrix.rust_target }}
 
