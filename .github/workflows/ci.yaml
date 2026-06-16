@@ -50,7 +50,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          archive="generate-report-${{ runner.os }}-${{ matrix.rust_target }}.zip"
+          archive="generate-report-${{ runner.os }}-${{ runner.arch }}.zip"
           if command -v zip >/dev/null 2>&1; then
             zip -r "$archive" dist
           else

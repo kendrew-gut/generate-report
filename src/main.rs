@@ -17,7 +17,11 @@ use include_dir::{Dir, include_dir};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use rfd::AsyncFileDialog;
 use slint::{Model, ModelRc, SharedString, VecModel, spawn_local};
-use typst::{diag::SourceDiagnostic, ecow::EcoVec, foundations::{Bytes, Dict, IntoValue}};
+use typst::{
+    diag::SourceDiagnostic,
+    ecow::EcoVec,
+    foundations::{Bytes, Dict, IntoValue},
+};
 use typst_as_lib::{TypstEngine, TypstTemplateMainFile};
 
 static TEMPLATES: Dir = include_dir!("$CARGO_MANIFEST_DIR/templates/");
@@ -107,17 +111,27 @@ fn build_engine(name: impl AsRef<str>) -> anyhow::Result<TypstEngine<TypstTempla
         .build())
 }
 
-fn compile(input: &String, selected_template: impl AsRef<str>, args: Dict, template_display_name: impl AsRef<str>) -> anyhow::Result<()> {
+fn compile(
+    input: &String,
+    selected_template: impl AsRef<str>,
+    args: Dict,
+    template_display_name: impl AsRef<str>,
+) -> anyhow::Result<()> {
     let selected_template = selected_template.as_ref();
     let template_display_name = template_display_name.as_ref();
     println!("Reading input json from: {input}");
     let mut reader = BufReader::new(OpenOptions::new().read(true).open(input)?);
     let mut input_json = Vec::new();
     reader.read_to_end(&mut input_json)?;
+    println!("Read input json file to end: {}B", input_json.len());
     let input_json = Bytes::new(input_json);
-    println!("Compiling template: {template_display_name} ({selected_template})");
+    println!("Deserialized input_json into: {}B", input_json.len());
+    let template_input = TemplateInput { input_json, args };
+    println!(
+        "Compiling template: {template_display_name} ({selected_template})\n with template input:\n{template_input:?}"
+    );
     match build_engine(&selected_template)?
-        .compile_with_input(TemplateInput { input_json, args }.into_dict())
+        .compile_with_input(template_input.into_dict())
         .output
     {
         Ok(doc) => {
@@ -239,7 +253,7 @@ fn main() -> anyhow::Result<()> {
                                     display_logo: false,
                                 }
                                 .into_dict(),
-                                template_display_name
+                                template_display_name,
                             ),
                             _ => anyhow::Result::Err(anyhow::Error::new(StringError(
                                 "Template not implemented".to_string(),
