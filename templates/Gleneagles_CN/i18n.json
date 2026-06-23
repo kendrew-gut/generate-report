@@ -1,0 +1,290 @@
+{
+  "NGS Gut Microbiome Health Screening Test": {
+    "zh_HK": "NGS 腸道微生態健康檢測"
+  },
+  "NGS Gut Microbiome Health Screening Report": {
+    "zh_HK": "NGS 腸道微生態健康檢測報告"
+  },
+  "[day]/[month]/[year]": {
+    "zh_HK": "[day]/[month]/[year]"
+  },
+  "Report Information": {
+    "zh_HK": "報告資料"
+  },
+  "User Name": {
+    "zh_HK": "用戶姓名"
+  },
+  "Report ID": {
+    "zh_HK": "報告編號"
+  },
+  "Report Date": {
+    "zh_HK": "報告日期"
+  },
+  "Sample ID": {
+    "zh_HK": "樣品編號"
+  },
+  "Sex": {
+    "zh_HK": "用戶性別"
+  },
+  "Sample Quality": {
+    "zh_HK": "樣品質量等級"
+  },
+  "Date of Birth": {
+    "zh_HK": "出生日期"
+  },
+  "Sample Mass": {
+    "zh_HK": "樣品總質量"
+  },
+  "Testing Date": {
+    "zh_HK": "檢測日期"
+  },
+  "Testing Item": {
+    "zh_HK": "檢測項目"
+  },
+  "Report Introduction": {
+    "zh_HK": "報告介紹"
+  },
+  "Probiotics": {
+    "zh_HK": "益生菌"
+  },
+  "Commensal Bacteria": {
+    "zh_HK": "共生菌"
+  },
+  "Harmful Bacteria": {
+    "zh_HK": "有害菌"
+  },
+  "Bad": {
+    "zh_HK": "很差"
+  },
+  "Fair": {
+    "zh_HK": "較差"
+  },
+  "Average": {
+    "zh_HK": "中等"
+  },
+  "Good": {
+    "zh_HK": "良好"
+  },
+  "Excellent": {
+    "zh_HK": "優秀"
+  },
+  "Highly Deficient": {
+    "zh_HK": "嚴重缺乏"
+  },
+  "Slightly Deficient": {
+    "zh_HK": "輕微缺乏"
+  },
+  "Balanced": {
+    "zh_HK": "平衡"
+  },
+  "Slightly Overabundant": {
+    "zh_HK": "輕微過剩"
+  },
+  "Highly Overabundant": {
+    "zh_HK": "嚴重過剩"
+  },
+  "Elevated Risk": {
+    "zh_HK": "較高風險"
+  },
+  "Baseline Risk": {
+    "zh_HK": "正常風險"
+  },
+  "Bifidobacterium longum": {
+    "zh_HK": "長雙歧桿菌"
+  },
+  "Lactiplantibacillus plantarum": {
+    "zh_HK": "植物乳桿菌"
+  },
+  "Lactobacillus acidophilus": {
+    "zh_HK": "嗜酸乳桿菌"
+  },
+  "Lacticaseibacillus rhamnosus": {
+    "zh_HK": "鼠李糖乳桿菌"
+  },
+  "Lactobacillus fermentum": {
+    "zh_HK": "發酵乳桿菌"
+  },
+  "Lactobacillus reuteri": {
+    "zh_HK": "洛德乳桿菌"
+  },
+  "Bifidobacterium animalis": {
+    "zh_HK": "動物雙歧桿菌"
+  },
+  "Enterocloster bolteae": {
+    "zh_HK": "波爾特氏腸道梭狀菌"
+  },
+  "Escherichia coli": {
+    "zh_HK": "大腸桿菌"
+  },
+  "Klebsiella pneumoniae": {
+    "zh_HK": "肺炎克雷伯桿菌"
+  },
+  "Shigella flexneri": {
+    "zh_HK": "弗氏志賀氏菌"
+  },
+  "Ruminococcus gnavus": {
+    "zh_HK": "活潑瘤胃球菌"
+  },
+  "Alistipes onderdonkii": {
+    "zh_HK": "奧氏另枝菌"
+  },
+  "Bacteroides cellulosilyticus": {
+    "zh_HK": "溶纖維擬桿菌"
+  },
+  "Bacteroides fragilis": {
+    "zh_HK": "脆弱擬桿菌"
+  },
+  "Bacteroides ovatus": {
+    "zh_HK": "卵形擬桿菌"
+  },
+  "Bacteroides vulgatus": {
+    "zh_HK": "多形擬桿菌"
+  },
+  "Bacteroides uniformis": {
+    "zh_HK": "單形擬桿菌"
+  },
+  "Bacteroides xylanisolvens": {
+    "zh_HK": "溶木聚糖擬桿菌"
+  },
+  "Lachnospira eligens": {
+    "zh_HK": "挑剔毛螺菌"
+  },
+  "Roseburia intestinalis": {
+    "zh_HK": "腸道羅斯氏菌"
+  },
+  "Parabacteroides distasonis": {
+    "zh_HK": "迪斯塔森副擬桿菌"
+  },
+  "Bacteroides dorei": {
+    "zh_HK": "多氏擬桿菌"
+  },
+  "Bacteroides eggerthii": {
+    "zh_HK": "埃氏擬桿菌"
+  },
+  "Phascolarctobacterium faecium": {
+    "zh_HK": "糞考拉桿菌"
+  },
+  "Bacteroides thetaiotaomicron": {
+    "zh_HK": "細菌擬桿菌"
+  },
+  "Faecalibacterium prausnitzii": {
+    "zh_HK": "直腸無桿菌"
+  },
+  "Akkermansia muciniphila": {
+    "zh_HK": "嗜黏蛋白阿克曼菌"
+  },
+  "Ruminococcus torques": {
+    "zh_HK": "托克斯瘤胃球菌"
+  },
+  "Collinsella aerofaciens": {
+    "zh_HK": "產氣柯林斯菌"
+  },
+  "Megamonas funiformis": {
+    "zh_HK": "單形巨單胞菌"
+  },
+  "Gut Health": {
+    "zh_HK": "腸道健康"
+  },
+  "Metabolism": {
+    "zh_HK": "代謝水平"
+  },
+  "Metabolic Disease": {
+    "zh_HK": "代謝疾病"
+  },
+  "Mental Disease": {
+    "zh_HK": "精神疾病"
+  },
+  "Mental Health": {
+    "zh_HK": "精神健康"
+  },
+  "Cognition": {
+    "zh_HK": "認知功能"
+  },
+  "Cognitive Disease": {
+    "zh_HK": "認知疾病"
+  },
+  "Autoimmunity Disease": {
+    "zh_HK": "自體免疫疾病"
+  },
+  "Autoimmunity": {
+    "zh_HK": "自體免疫"
+  },
+  "Gastrointestinal Disease": {
+    "zh_HK": "胃腸道疾病"
+  },
+  "IBS - Diarrhea": {
+    "zh_HK": "大腸激躁症-便祕型"
+  },
+  "IBS - Constipation": {
+    "zh_HK": "大腸激躁症-腹瀉型"
+  },
+  "Irritable Bowel Syndrome - Constipation": {
+    "zh_HK": "大腸激躁症 - 便祕型"
+  },
+  "Irritable Bowel Syndrome - Diarrhea": {
+    "zh_HK": "大腸激躁症 - 腹瀉型"
+  },
+  "Inflammatory Bowel Disease": {
+    "zh_HK": "炎症性腸病"
+  },
+  "IBD": {
+    "zh_HK": "炎症性腸病"
+  },
+  "Colorectal Cancer": {
+    "zh_HK": "大腸癌"
+  },
+  "Diabetes": {
+    "zh_HK": "糖尿病"
+  },
+  "NAFLD": {
+    "zh_HK": "非酒精性脂肪肝"
+  },
+  "Hormonal Imbalance": {
+    "zh_HK": "激素失調"
+  },
+  "Sleep Disorder": {
+    "zh_HK": "睡眠障礙"
+  },
+  "Anxiety": {
+    "zh_HK": "焦慮症"
+  },
+  "Depression": {
+    "zh_HK": "抑鬱症"
+  },
+  "Cognitive Impairment": {
+    "zh_HK": "認知障礙"
+  },
+  "Alzheimer's Disease": {
+    "zh_HK": "阿茲海默症"
+  },
+  "Allergy": {
+    "zh_HK": "過敏性疾病"
+  },
+  "Eczema": {
+    "zh_HK": "濕疹"
+  },
+  "Superfood": {
+    "zh_HK": "超級食物"
+  },
+  "Enjoy": {
+    "zh_HK": "享受"
+  },
+  "Minimize": {
+    "zh_HK": "盡量減少"
+  },
+  "Health Conditions Overview": {
+    "zh_HK": "健康情況總覽"
+  },
+  "Analysis Results of Microbiome": {
+    "zh_HK": "微生物組分析結果"
+  },
+  "Disease Risks Assessment": {
+    "zh_HK": "疾病風險評估"
+  },
+  "Personalised Nutrition Guidelines": {
+    "zh_HK": "個人化營養膳食指南"
+  },
+  "Appendix": {
+    "zh_HK": "附錄"
+  }
+}

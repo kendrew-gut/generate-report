@@ -59,7 +59,12 @@ impl Error for TypstPdfGenerationError {}
 slint::include_modules!();
 
 fn templates() -> &'static [&'static str] {
-    &["Gleneagles_ENG", "Gleneagles_ENG (white label)"]
+    &[
+        "Gleneagles_ENG",
+        "Gleneagles_ENG (white label)",
+        "Gleneagles_CN",
+        "Gleneagles_CN (white label)",
+    ]
 }
 
 fn build_engine(name: impl AsRef<str>) -> anyhow::Result<TypstEngine<TypstTemplateMainFile>> {
@@ -130,9 +135,7 @@ fn compile(
         args,
         production: true,
     };
-    println!(
-        "Compiling template: {template_display_name} ({selected_template})"
-    );
+    println!("Compiling template: {template_display_name} ({selected_template})");
     match build_engine(&selected_template)?
         .compile_with_input(template_input.into_dict())
         .output
@@ -246,12 +249,33 @@ fn main() -> anyhow::Result<()> {
                             "Gleneagles_ENG" => compile(
                                 input,
                                 "Gleneagles_ENG",
-                                GleneaglesTemplateArgs { show_gleneagles_logo: true }.into_dict(),
+                                GleneaglesTemplateArgs {
+                                    show_gleneagles_logo: true,
+                                }
+                                .into_dict(),
                                 template_display_name,
                             ),
                             "Gleneagles_ENG (white label)" => compile(
                                 input,
                                 "Gleneagles_ENG",
+                                GleneaglesTemplateArgs {
+                                    show_gleneagles_logo: false,
+                                }
+                                .into_dict(),
+                                template_display_name,
+                            ),
+                            "Gleneagles_CN" => compile(
+                                input,
+                                "Gleneagles_CN",
+                                GleneaglesTemplateArgs {
+                                    show_gleneagles_logo: true,
+                                }
+                                .into_dict(),
+                                template_display_name,
+                            ),
+                            "Gleneagles_CN (white label)" => compile(
+                                input,
+                                "Gleneagles_CN",
                                 GleneaglesTemplateArgs {
                                     show_gleneagles_logo: false,
                                 }
