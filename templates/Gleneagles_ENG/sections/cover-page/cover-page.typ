@@ -3,12 +3,11 @@
 #let cover-page(report) = page(background: align(bottom, image("images/cover-page-background.png")), margin: (
   x: 0.6in,
 ))[
-  #if display-logo {
-    image("images/gleneagles-logo-full.jpg", width: 400pt)
-  }
-  #v(7em)
-  #title()
   #v(5em)
+  #image(if show-gleneagles-logo {"images/gleneagles-logo-full.jpg"} else {"images/gutolution-logo-banner.png"}, width: 400pt)
+  #v(6em)
+  #title()
+  #v(4em)
   #block(width: 55%)[
     #subtitle[
       #columns(2, gutter: 0pt)[

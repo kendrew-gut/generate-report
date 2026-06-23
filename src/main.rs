@@ -44,7 +44,7 @@ struct TemplateInput {
 
 #[derive(Debug, Clone, IntoValue, IntoDict)]
 struct GleneaglesTemplateArgs {
-    display_logo: bool,
+    show_gleneagles_logo: bool,
 }
 
 #[derive(Debug, Clone, Hash, PartialEq)]
@@ -246,14 +246,14 @@ fn main() -> anyhow::Result<()> {
                             "Gleneagles_ENG" => compile(
                                 input,
                                 "Gleneagles_ENG",
-                                GleneaglesTemplateArgs { display_logo: true }.into_dict(),
+                                GleneaglesTemplateArgs { show_gleneagles_logo: true }.into_dict(),
                                 template_display_name,
                             ),
                             "Gleneagles_ENG (white label)" => compile(
                                 input,
                                 "Gleneagles_ENG",
                                 GleneaglesTemplateArgs {
-                                    display_logo: false,
+                                    show_gleneagles_logo: false,
                                 }
                                 .into_dict(),
                                 template_display_name,

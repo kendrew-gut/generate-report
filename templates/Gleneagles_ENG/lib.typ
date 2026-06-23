@@ -19,10 +19,8 @@
 
 #let i18n = json("i18n.json")
 
-#let (display_logo: display-logo, locale) = sys.inputs.at("args", default: (display_logo: true, locale: "zh_HK"))
-/// Translations of content are converted to string and do not preserve formatting
-#let localize(s) = if locale == "en_HK" { s } else { i18n.at(to-string(s)).at(locale) }
-#let date-format = localize("[day]/[month]/[year]")
+#let (show_gleneagles_logo: show-gleneagles-logo) = sys.inputs.at("args", default: (show_gleneagles_logo: false))
+#let date-format = "[day]/[month]/[year]"
 #let neutral = rgb("#B0BDC1")
 #let primary = rgb("#44b6bd")
 #let secondary = rgb("#3b88c3")
@@ -80,9 +78,9 @@
 #let standard-page-background(report) = context {
   align(top)[
     #image("images/header-background.png")
-    #if display-logo {
-      place(top + start, pad(top: 8pt, left: 8pt, image("images/gleneagles-header-logo-full.png")))
-    }
+    #place(top + start, pad(top: 1em, left: 1em, image(if show-gleneagles-logo {
+      "images/gleneagles-header-logo-full.png"
+    } else { "images/gutolution-logo-banner.png" }, width: 13.5em)))
     #place(top + end, pad(top: 20pt, right: 15pt, header-text[
       #i18n.at(report.product).zh_HK\
       #report.product
