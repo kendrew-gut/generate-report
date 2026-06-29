@@ -2,5 +2,11 @@
     "tinymist.fontPaths": [
         "${workspaceFolder}/templates/Gleneagles_ENG/fonts/Mulish",
         "${workspaceFolder}/templates/Gleneagles_ENG/fonts/Noto_Sans_TC"
-    ]
+    ],
+    "[typst]": {
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.acceptSuggestionOnCommitCharacter": false, // Don’t auto-accept on punctuation
+        "editor.snippetSuggestions": "none", // Disable snippet suggestions
+        "editor.wordBasedSuggestions": "off" // Disable word-completion from the current document
+    },
 }
