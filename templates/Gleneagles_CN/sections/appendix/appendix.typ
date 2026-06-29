@@ -13,11 +13,11 @@
       table.header(
         table.cell(
           fill: primary.lighten(70%),
-          text(weight: "bold")[Bacterial Species],
+          text(weight: "bold")[細菌種類],
         ),
         table.cell(
           fill: primary.lighten(70%),
-          text(weight: "bold")[Relative Abudnance (%)],
+          text(weight: "bold")[相對豐度（%）],
         ),
       ),
       ..for species in report.top_50_species.slice(start, end) {
