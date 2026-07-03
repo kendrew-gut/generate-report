@@ -18,6 +18,7 @@
 #let primary = rgb("b4dee8")
 #let green = rgb("56bc6c")
 #let red = rgb("de4d46")
+#let grey = rgb("595959")
 
 #let style(body) = {
   show title: set text(size: 28pt, weight: "medium", tracking: 1.2pt)
@@ -38,7 +39,6 @@
   })
 }
 
-
 #let page-style = {
   let f(it) = {
     set page(
@@ -51,4 +51,11 @@
   }
 
   f
+}
+
+#let captialize(s) = {
+  if s.len() > 0 {
+    return upper(s.slice(0, 1)) + s.slice(1)
+  }
+  s
 }
