@@ -259,7 +259,7 @@
   ))
   set text(
     size: 12pt,
-    font: ("Noto Sans TC", (name: "Mulish", covers: "latin-in-cjk")),
+    font: ("Mulish", "Noto Sans TC"),
     weight: "regular",
     lang: "zh",
     region: "HK",

@@ -78,9 +78,12 @@
 #let standard-page-background(report) = context {
   align(top)[
     #image("images/header-background.png")
-    #place(top + start, pad(top: 1em, left: 1em, image(if show-gleneagles-logo {
-      "images/gleneagles-header-logo-full.png"
-    } else { "images/gutolution-logo-banner.png" }, width: 13.5em)))
+    #place(top + start, pad(top: 1em, left: 1em, image(
+      if show-gleneagles-logo {
+        "images/gleneagles-header-logo-full.png"
+      } else { "images/gutolution-logo-banner.png" },
+      width: 13.5em,
+    )))
     #place(top + end, pad(top: 20pt, right: 15pt, header-text[
       #i18n.at(report.product).zh_HK\
       #report.product
@@ -242,8 +245,15 @@
     fill: primary.darken(20%),
     it.body,
   ))
-  set text(size: 12pt, font: ((name: "Mulish", covers: "latin-in-cjk"), "Noto Sans TC"), weight: "medium")
-  show smartquote: set text(features: ("pwid",)) 
+
+  set text(
+    size: 12pt,
+    font: ("Mulish", "Noto Sans TC"),
+    weight: "regular",
+    lang: "en",
+    region: "HK",
+  )
+  show smartquote: set text(features: ("pwid",))
 
   body
 }
