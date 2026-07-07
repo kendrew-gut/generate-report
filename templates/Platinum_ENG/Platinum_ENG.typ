@@ -9,7 +9,7 @@
 )
 
 #let production = sys.inputs.at("production", default: false)
-#let report = if production { json(sys.inputs.at("input_json")) } else { json("reference/reference.json") }
+#let report = if production { json(sys.inputs.at("input_json")) } else { json("reference/MEJAN8702_platinum_report_DEMO_FAKE_CLIENT.json") }
 #{
   report.sample_collected_date = to-date(report.sample_collected_date)
   report.client.date_of_birth = to-date(report.client.date_of_birth)

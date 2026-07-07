@@ -21,7 +21,8 @@
 #let date-format = "[day]/[month]/[year]"
 #let to-date(s) = toml(bytes("date = " + s)).date
 
-#let primary = rgb("b4dee8")
+#let primary-container = rgb("b4dee8")
+#let primary = rgb("0097b2")
 #let green = rgb("56bc6c")
 #let red = rgb("de4d46")
 #let grey = rgb("595959")
@@ -29,19 +30,19 @@
 #let style(body) = {
   show title: set text(size: 28pt, weight: "medium", tracking: 1.2pt)
   show heading.where(level: 1): set text(size: 18pt, weight: "extrabold", fill: rgb(22, 74, 100))
-  set text(size: 11pt, font: "Inter", weight: "regular", features: ("salt",))
+  set text(size: 11pt, font: "Inter", weight: "regular", features: ("cv05",))
   body
 }
 
 #let standard-page-background(section-header: none) = {
   image("images/background-pattern.svg")
   place(top, context {
-    let header = image("images/header-background.png")
+    let header = image("images/header-background.svg")
     box(height: measure(header).height, {
       header
       place(horizon, pad(top: 1em, left: 2em)[= #section-header])
     })
-    place(top + end, pad(top: 0.6em, right: 1em, image("images/gutolution_logo_header.png", width: 11em)))
+    place(top + end, pad(top: 0.6em, right: 2em, image("images/gutolution-logo-header.svg", width: 10em)))
   })
 }
 

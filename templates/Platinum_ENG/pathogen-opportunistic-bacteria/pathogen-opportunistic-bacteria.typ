@@ -13,7 +13,7 @@
   #show table.cell.where(x: 1).or(table.cell.where(x: 2)): it => text(features: ("tnum",), it)
   #table(
     columns: (24%, 15%, 15%, 27%, 19%),
-    fill: (x, y) => if y == 0 { primary },
+    fill: (x, y) => if y == 0 { primary-container },
     inset: (x: 0.7em, y: 1em),
     table.header(
       [Bacterial\ Pathogens], [Result], [Reference], [Role / Gut & Host Function / Impact], [Re-test Interval\*]
@@ -21,7 +21,9 @@
     ..for pathogen in report.pathogens {
       (
         align(horizon)[_#pathogen.name _],
-        align(center + horizon, text(fill: if within-range(pathogen.reference_range, pathogen.result) { green } else {
+        align(center + horizon, text(fill: if pathogen.result.rank == 1 { green } else if pathogen.result.rank == 2 {
+          yellow
+        } else {
           red
         })[*#numfmt(pathogen.result.value)*]),
         align(center + horizon, if pathogen.reference_range.lower == none {

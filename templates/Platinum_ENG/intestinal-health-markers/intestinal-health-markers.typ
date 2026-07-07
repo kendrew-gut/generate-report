@@ -13,7 +13,7 @@
   #show table.cell.where(x: 1).or(table.cell.where(x: 2)): it => text(features: ("tnum",), it)
   #table(
     columns: (7%, 23%, 23%, 16%, 16%, 16%),
-    fill: (x, y) => if y == 0 { primary },
+    fill: (x, y) => if y == 0 { primary-container },
     inset: (x: 0.7em, y: 1em),
     table.header(
       [No.], [Marker], [Function], [Result], [Reference], [Re-test Interval\*]
