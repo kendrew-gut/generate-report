@@ -15,6 +15,7 @@
     columns: (7%, 23%, 23%, 16%, 16%, 16%),
     fill: (x, y) => if y == 0 { primary-container },
     inset: (x: 0.7em, y: 1em),
+    stroke: grey.lighten(60%),
     table.header(
       [No.], [Marker], [Function], [Result], [Reference], [Re-test Interval\*]
     ),

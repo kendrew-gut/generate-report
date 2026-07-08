@@ -3,6 +3,7 @@
 #import "at-a-glance/at-a-glance.typ": at-a-glance
 #import "pathogen-opportunistic-bacteria/pathogen-opportunistic-bacteria.typ": pathogen-opportunistic-bacteria
 #import "intestinal-health-markers/intestinal-health-markers.typ": intestinal-health-markers
+#import "non-bacterial-members/non-bacterial-members.typ": non-bacterial-members
 
 #set document(
   title: [GUTolution™ Microbiome Test Platinum],
@@ -23,7 +24,7 @@
 
 #show: page-style
 
-#let sections = (at-a-glance, pathogen-opportunistic-bacteria, intestinal-health-markers)
+#let sections = (at-a-glance, pathogen-opportunistic-bacteria, intestinal-health-markers, non-bacterial-members)
 
 #for (i, section) in sections.enumerate() {
   section(report)

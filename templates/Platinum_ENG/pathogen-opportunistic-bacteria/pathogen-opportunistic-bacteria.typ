@@ -15,6 +15,7 @@
     columns: (24%, 15%, 15%, 27%, 19%),
     fill: (x, y) => if y == 0 { primary-container },
     inset: (x: 0.7em, y: 1em),
+    stroke: grey.lighten(60%),
     table.header(
       [Bacterial\ Pathogens], [Result], [Reference], [Role / Gut & Host Function / Impact], [Re-test Interval\*]
     ),
