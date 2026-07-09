@@ -4,13 +4,16 @@
 #import "pathogen-opportunistic-bacteria/pathogen-opportunistic-bacteria.typ": pathogen-opportunistic-bacteria
 #import "intestinal-health-markers/intestinal-health-markers.typ": intestinal-health-markers
 #import "non-bacterial-members/non-bacterial-members.typ": non-bacterial-members
+#import "commensal-keystone-bacteria/commensal-keystone-bacteria.typ": commensal-keystone-bacteria
 
 #set document(
   title: [GUTolution™ Microbiome Test Platinum],
 )
 
 #let production = sys.inputs.at("production", default: false)
-#let report = if production { json(sys.inputs.at("input_json")) } else { json("reference/MEJAN8702_platinum_report_DEMO_FAKE_CLIENT.json") }
+#let report = if production { json(sys.inputs.at("input_json")) } else {
+  json("reference/MEJAN8702_platinum_report_DEMO_FAKE_CLIENT.json")
+}
 #{
   report.sample_collected_date = to-date(report.sample_collected_date)
   report.client.date_of_birth = to-date(report.client.date_of_birth)
@@ -24,7 +27,13 @@
 
 #show: page-style
 
-#let sections = (at-a-glance, pathogen-opportunistic-bacteria, intestinal-health-markers, non-bacterial-members)
+#let sections = (
+  at-a-glance,
+  pathogen-opportunistic-bacteria,
+  intestinal-health-markers,
+  non-bacterial-members,
+  commensal-keystone-bacteria,
+)
 
 #for (i, section) in sections.enumerate() {
   section(report)

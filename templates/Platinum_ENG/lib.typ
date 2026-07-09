@@ -5,8 +5,7 @@
 #let numfmt_i(num) = {
   if num < 1E-6 or num > 1E6 {
     return strfmt("{:.2E}", num)
-  } 
-  else {num}
+  } else { num }
 } //number format for intestinal health markers
 #let within-range(range, num) = {
   if (range.lower != none and num < range.lower) {
@@ -25,6 +24,7 @@
 #let primary = rgb("0097b2")
 #let green = rgb("56bc6c")
 #let red = rgb("de4d46")
+#let yellow = yellow.darken(5%)
 #let grey = rgb("595959")
 
 #let style(body) = {
@@ -66,3 +66,44 @@
   }
   s
 }
+
+#let platinum-table(
+  columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+  tnum-cols: (),
+  left-align-cols: (),
+  small-font-cols: (),
+  inset: (x: 0.7em, y: 1em),
+  ..values,
+) = {
+  show: it => tnum-cols.fold(it, (it, col) => {
+    show table.cell.where(x: col): cell => if cell.y > 0 { text(features: ("tnum",), cell) } else { cell }
+    it
+  })
+  show: it => left-align-cols.fold(it, (it, col) => {
+    show table.cell.where(x: col): cell => if cell.y > 0 { align(start, cell) } else { cell }
+    it
+  })
+  show: it => small-font-cols.fold(it, (it, col) => {
+    show table.cell.where(x: col): cell => if cell.y > 0 { text(size: 8pt, cell) } else { cell }
+    it
+  })
+
+  set table(fill: (x, y) => if y == 0 { primary-container }, inset: inset, stroke: grey.lighten(60%))
+  show table.cell: it => if it.y > 0 { text(size: 10pt, it) } else { it }
+  show table.cell.where(y: 0): strong
+  show table.cell: it => align(horizon + center, it)
+
+  table(
+    columns: columns,
+    ..values
+  )
+}
+
+#let display-range(range) = align(center + horizon, if range.lower == none {
+  [<#numfmt(range.upper)]
+} else if range.upper == none {
+  [>#numfmt(range.lower)]
+} else {
+  box(align(center)[#numfmt(range.lower)-\ #numfmt(range.upper)])
+})
+#let rank-to-color(rank) = if rank == 2 { yellow } else if rank == 3 { red } else { green }
