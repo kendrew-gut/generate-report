@@ -30,6 +30,7 @@
 #let style(body) = {
   show title: set text(size: 28pt, weight: "medium", tracking: 1.2pt)
   show heading.where(level: 1): set text(size: 18pt, weight: "extrabold", fill: rgb(22, 74, 100))
+  set heading()
   set text(size: 11pt, font: "Inter", weight: "regular")
   body
 }

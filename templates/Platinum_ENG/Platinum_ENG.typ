@@ -9,6 +9,7 @@
 #import "scfa-producers/scfa-producers.typ": scfa-producers
 #import "inflammatory-microbiome/inflammatory-microbiome.typ": inflammatory-microbiome
 #import "fifty-abundant-species/fifty-abundant-species.typ": fifty-abundant-species
+#import "appendix/appendix.typ": appendix
 
 #set document(
   title: [GUTolution™ Microbiome Test Platinum],
@@ -40,7 +41,8 @@
   probiotic-bacterial-members,
   scfa-producers,
   inflammatory-microbiome,
-  fifty-abundant-species
+  fifty-abundant-species,
+  appendix,
 )
 
 #for (i, section) in sections.enumerate() {
