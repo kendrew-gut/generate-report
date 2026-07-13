@@ -8,6 +8,7 @@
 #import "probiotic-bacterial-members/probiotic-bacterial-members.typ": probiotic-bacterial-members
 #import "scfa-producers/scfa-producers.typ": scfa-producers
 #import "inflammatory-microbiome/inflammatory-microbiome.typ": inflammatory-microbiome
+#import "fifty-abundant-species/fifty-abundant-species.typ": fifty-abundant-species
 
 #set document(
   title: [GUTolution™ Microbiome Test Platinum],
@@ -38,7 +39,8 @@
   commensal-keystone-bacteria,
   probiotic-bacterial-members,
   scfa-producers,
-  inflammatory-microbiome
+  inflammatory-microbiome,
+  fifty-abundant-species
 )
 
 #for (i, section) in sections.enumerate() {
