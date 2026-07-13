@@ -11,6 +11,7 @@
     #image("images/arrow-logo.svg")
     #v(0.2cm)
     #{
+      set text(features: ("cv05",))
       show table.cell.where(x: 0): set text(weight: "bold")
       show table.cell: set text(size: 19pt, fill: rgb("164A64"))
       box(width: 13cm, table(
