@@ -77,7 +77,7 @@
   ..values,
 ) = {
   show: it => tnum-cols.fold(it, (it, col) => {
-    show table.cell.where(x: col): cell => if cell.y > 0 { text(features: ("tnum",), cell) } else { cell }
+    show table.cell.where(x: col): cell => if cell.y > 0 { text(number-width: "tabular", cell) } else { cell }
     it
   })
   show: it => left-align-cols.fold(it, (it, col) => {
@@ -105,6 +105,6 @@
 } else if range.upper == none {
   [>#numfmt(range.lower)]
 } else {
-  box(align(center)[#numfmt(range.lower)-\ #numfmt(range.upper)])
+  pad(left: 1em, box(align(left)[#numfmt(range.lower)-\ #numfmt(range.upper)]))
 })
 #let rank-to-color(rank) = if rank == 2 { yellow } else if rank == 3 { red } else { green }
