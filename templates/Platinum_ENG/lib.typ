@@ -35,7 +35,7 @@
   body
 }
 
-#let standard-page-background(section-header: none) = {
+#let standard-page-background(section-header: none) = context {
   image("images/background-pattern.svg")
   place(top, context {
     let header = image("images/header-background.svg")
@@ -45,6 +45,7 @@
     })
     place(top + end, pad(top: 0.6em, right: 2em, image("images/gutolution-logo-header.svg", width: 10em)))
   })
+  place(bottom + end, pad(bottom: 0.55cm, right: 1.2cm, text(size: 15pt, fill: primary.darken(10%), weight: 550, counter(page).display())))
 }
 
 #let page-style = {
@@ -52,8 +53,6 @@
     set page(
       header: anchor(),
       margin: (top: 3cm, x: 1.2cm, bottom: 1.2cm),
-      numbering: "1",
-      number-align: end,
     )
     set text(features: ("cv05",))
     it
