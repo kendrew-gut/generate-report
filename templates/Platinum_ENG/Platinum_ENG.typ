@@ -1,5 +1,5 @@
 #import "lib.typ": *
-#import "cover-page/cover-page.typ": cover-page
+#import "front-cover/front-cover.typ": front-cover
 #import "at-a-glance/at-a-glance.typ": at-a-glance
 #import "pathogen-opportunistic-bacteria/pathogen-opportunistic-bacteria.typ": pathogen-opportunistic-bacteria
 #import "intestinal-health-markers/intestinal-health-markers.typ": intestinal-health-markers
@@ -10,6 +10,7 @@
 #import "inflammatory-microbiome/inflammatory-microbiome.typ": inflammatory-microbiome
 #import "fifty-abundant-species/fifty-abundant-species.typ": fifty-abundant-species
 #import "appendix/appendix.typ": appendix
+#import "back-cover/back-cover.typ": back-cover
 
 #set document(
   title: [GUTolution™ Microbiome Test Platinum],
@@ -26,7 +27,7 @@
 
 #show: style
 
-#cover-page(report)
+#front-cover(report)
 
 #counter(page).update(2)
 
@@ -43,6 +44,7 @@
   inflammatory-microbiome,
   fifty-abundant-species,
   appendix,
+  back-cover
 )
 
 #for (i, section) in sections.enumerate() {

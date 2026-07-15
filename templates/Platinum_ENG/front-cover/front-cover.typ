@@ -1,6 +1,6 @@
 #import "../lib.typ": *
 
-#let cover-page(report) = page(
+#let front-cover(report) = page(
   background: image("../images/background-pattern.svg"),
   margin: (x: 1cm, top: 1cm, bottom: 0cm),
   align(center)[
