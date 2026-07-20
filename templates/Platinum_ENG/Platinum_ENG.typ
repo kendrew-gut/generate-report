@@ -3,6 +3,7 @@
 #import "at-a-glance/at-a-glance.typ": at-a-glance
 #import "pathogen-opportunistic-bacteria/pathogen-opportunistic-bacteria.typ": pathogen-opportunistic-bacteria
 #import "intestinal-health-markers/intestinal-health-markers.typ": intestinal-health-markers
+#import "microbial-ecosystem-overview/microbial-ecosystem-overview.typ": microbial-ecosystem-overview
 #import "non-bacterial-members/non-bacterial-members.typ": non-bacterial-members
 #import "commensal-keystone-bacteria/commensal-keystone-bacteria.typ": commensal-keystone-bacteria
 #import "probiotic-bacterial-members/probiotic-bacterial-members.typ": probiotic-bacterial-members
@@ -37,6 +38,7 @@
   at-a-glance,
   pathogen-opportunistic-bacteria,
   intestinal-health-markers,
+  microbial-ecosystem-overview,
   non-bacterial-members,
   commensal-keystone-bacteria,
   probiotic-bacterial-members,
