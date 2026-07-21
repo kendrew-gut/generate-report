@@ -1,7 +1,14 @@
 #import "../lib.typ": *
 #import "@preview/shadowed:0.3.0": shadow
 
-#let producers-card(label: [], tagline: [], producers: (), increases: (), producers-increases-spacing: 1.5cm, arrow-scale: 100%) = box(width: 33%, stack(
+#let producers-card(
+  label: [],
+  tagline: [],
+  producers: (),
+  increases: (),
+  producers-increases-spacing: 1.5cm,
+  arrow-scale: 100%,
+) = box(width: 33%, stack(
   shadow(
     blur: 8pt,
     dx: 0.5em,
@@ -46,7 +53,7 @@
 ))
 
 #let scfa-producers(report) = page(background: standard-page-background(section-header: [SCFA Producers]), margin: (
-  top: 2.6cm
+  top: 2.6cm,
 ))[
   #align(center, platinum-table(
     tnum-cols: (0, 2, 3),
@@ -64,7 +71,7 @@
         [#(i + 1)],
         [_#bacteria.species _],
         text(fill: rank-to-color(bacteria.result.rank))[*#numfmt(bacteria.result.value)*],
-        [#display-range(bacteria.reference_range)],
+        [#bacteria.logic_operator],
       )
     },
   ))
@@ -79,8 +86,8 @@
       increases: (
         [Insulin],
         [GOS (galacto-oligosaccharides)],
-        [Pectin]
-      )
+        [Pectin],
+      ),
     ),
     producers-card(
       label: [Butyrate Producers],
@@ -101,8 +108,8 @@
         [Resistant starch],
         [Inulin / FOS fibre],
         [PHGG (Partially Hydrolysed Guar Gum)],
-        [Polyphenols (e.g. berries. green tea, cocoa)]
-      )
+        [Polyphenols (e.g. berries. green tea, cocoa)],
+      ),
     ),
     producers-card(
       label: [Propionate Producers],
@@ -111,8 +118,8 @@
       increases: (
         [Whole-grain fibre],
         [Beta-glucans],
-        [Resistant starch type III (cooled potatoes, rice)]
-      )
+        [Resistant starch type III (cooled potatoes, rice)],
+      ),
     ),
   )
 ]

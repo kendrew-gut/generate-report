@@ -23,13 +23,20 @@
   return legend
 }
 
+#let abundance-table-row(name, data) = (
+  emph(name),
+  [#data.abundance],
+  data.logic_operator,
+  display-rating(data.rating),
+)
+
 
 #let microbial-ecosystem-overview(report) = page(
   background: standard-page-background(
     section-header: [Microbial Ecosystem Overview],
   ),
 )[
-  #align(center, stack(dir: ltr, spacing: 0.3cm, box(align(left, text(size: 12pt)[*Phylum\ Composition*])), rect(
+  #align(center, stack(dir: ltr, spacing: 1cm, box(align(left, text(size: 12pt)[*Phylum\ Composition*])), rect(
     fill: rgb("#d0e7ec"),
     width: 70%,
     height: 9cm,
@@ -54,7 +61,7 @@
             if index not in legend_idx {
               content(
                 (offset + seg.at(index) / 2, 4),
-                align(center, text(size: 8pt)[#phylum.name\ #phylum.abundance%]),
+                align(center, text(size: 8pt)[#phylum.name\ #strfmt("{:.2}", phylum.abundance)%]),
                 name: "label",
               )
               line(
@@ -89,6 +96,46 @@
       }))
     ),
   )))
+
+  #align(center)[
+    #platinum-table(
+      columns: (30%, 20%, 20%, 20%),
+      left-align-cols: (0,),
+      table.header(
+        align(left)[Bacterial Phyla],
+        [Relative Abundance (%)],
+        [Reference Range (%)],
+        [Rating],
+      ),
+      ..(
+        ([Bacteroidetes], report.microbial_ecosystem.bacteroidetes),
+        ([Firmicutes], report.microbial_ecosystem.firmicutes),
+        ([Firmicutes:Bacteroidetes Ratio\*], report.microbial_ecosystem.firm_bact_ratio),
+      )
+        .map(((name, data)) => abundance-table-row(name, data))
+        .flatten(),
+    )
+    #platinum-table(
+      columns: (30%, 20%, 20%, 20%),
+      left-align-cols: (0,),
+      table.header(
+        align(left)[Endotoxin (LPS) Burden Indicator],
+        [Relative Abundance (%)],
+        [Reference Range (%)],
+        [Rating],
+      ),
+      ..abundance-table-row([Proteobacteria], report.microbial_ecosystem.proteobacteria),
+    )
+  ]
+
+  #pad(x: 1cm)[*Note:*\
+    Proteobacteria are a major source of endotoxin (LPS), which can activate inflammatory pathways including IL-6 and TNF-α.
+
+    Borderline elevation suggests a potential increase in endotoxin burden, which may contribute to low-grade systemic inflammation, increased intestinal permeability, and metabolic or hepatic stress.
+
+    This metric serves as a practical proxy for total endotoxin (LPS) burden within the gut microbiome.
+
+    \*The Firmicutes:Bacteroidetes ratio reflects the proportional relationship between both phyla and may differ from individual phylum reference ranges.]
 ]
 
 

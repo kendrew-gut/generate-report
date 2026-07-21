@@ -1,0 +1,23 @@
+{
+    "parasitic_pathogens": [
+        "Intracellular protozoan that infects intestinal epithelial cells and causes watery diarrhea and mucosal inflammation.",
+        "Invasive protozoan that degrades intestinal tissue and can cause dysentery and mucosal ulceration.",
+        "Flagellated protozoan that attaches to the small intestine, disrupting nutrient absorption and causing diarrhea and dysbiosis."
+    ],
+    "viral_pathogens": [
+        "Enteric virus that infects intestinal epithelial cells and is associated with pediatric gastroenteritis and diarrhea."
+    ],
+    "fungi": [
+        "Opportunistic yeast that can expand during microbiome imbalance and contribute to mucosal irritation and immune activation.",
+        "Opportunistic fungal pathobiont capable of epithelial adhesion and biofilm formation, promoting inflammation when overgrown."
+    ],
+    "protozoa_worms": [
+        "Intestinal protozoan that colonizes the colon; may alter gut permeability and trigger inflammatory responses in some hosts.",
+        "Flagellated protozoan commonly found as a commensal; elevated levels may reflect microbial imbalance or gastrointestinal irritation.",
+        "Hookworm that attaches to intestinal mucosa and feeds on blood, potentially causing anemia and intestinal inflammation.",
+        "Large intestinal roundworm that competes for nutrients and may cause intestinal obstruction or malabsorption in heavy infections.",
+        "Hookworm that penetrates skin and attaches to intestinal mucosa, feeding on blood and potentially causing iron-deficiency anemia.",
+        "Whipworm that embeds in colonic mucosa, causing local inflammation, diarrhea, and potential anemia in heavy infections.",
+        "Intestinal tapeworm that absorbs host nutrients and may cause abdominal discomfort and nutritional deficiencies."
+    ]
+}

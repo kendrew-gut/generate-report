@@ -1,5 +1,7 @@
 #import "../lib.typ": *
 
+#let marker-functions = json("marker-functions.json")
+
 #let intestinal-health-markers(report) = page(
   background: standard-page-background(
     section-header: [Intestinal Health Markers],
@@ -20,14 +22,14 @@
       [Reference],
       [Re-test Interval\*],
     ),
-    ..for (i, marker) in report.intestinal_health_markers.enumerate() {
+    ..for (i, (marker, function)) in report.intestinal_health_markers.zip(marker-functions).enumerate() {
       (
         [#(i + 1)],
         [#marker.name],
-        [#marker.function],
+        [#function],
         text(fill: rank-to-color(marker.result.rank))[*#marker.result.value #marker.unit*],
-        [#display-range(marker.reference_range) #marker.unit],
-        [#marker.retest_interval]
+        [#marker.logic_operator],
+        [#rank-to-retest-interval(marker.result.rank)],
       )
     },
   )

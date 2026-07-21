@@ -10,7 +10,7 @@
 #let back-cover(_) = page(
   fill: gradient.linear(space: oklch, angle: 0deg, rgb("cae7ed"), rgb("61bbcb")),
   numbering: none,
-  margin: (x: 2cm, y: 1.5cm)
+  margin: (x: 2cm, y: 1.5cm),
 )[
   #align(bottom + center)[
     #set par(leading: 0.4em, spacing: 1em)
@@ -38,6 +38,11 @@
       Platinum
     ]
 
-    #align(left, par(justify: true, text(size: 10pt, weight: 450, tracking: 0pt, [_The information on this report is for educational and informational use only. The information is not intended to be used by the customer for any diagnostic purpose and is not a substitute for professional medical advice. You should always seek the advice of your physician or other healthcare providers with any questions you may have regarding diagnosis, cure, treatment, mitigation, or prevention of any disease or other medical condition or impairment or the status of your health._])))
+    #align(left, par(justify: true, text(
+      size: 10pt,
+      weight: 450,
+      tracking: 0pt,
+      [_The information on this report is for educational and informational use only. The information is not intended to be used by the customer for any diagnostic purpose and is not a substitute for professional medical advice. You should always seek the advice of your physician or other healthcare providers with any questions you may have regarding diagnosis, cure, treatment, mitigation, or prevention of any disease or other medical condition or impairment or the status of your health._],
+    )))
   ]
 ]

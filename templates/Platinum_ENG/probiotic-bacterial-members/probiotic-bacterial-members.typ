@@ -1,5 +1,7 @@
 #import "../lib.typ": *
 
+#let impacts = json("impact.json")
+
 #let probiotic-bacterial-members(report) = page(background: standard-page-background(
   section-header: [Probiotic Bacterial Members],
 ))[
@@ -8,19 +10,19 @@
     left-align-cols: (0, 3),
     tnum-cols: (1, 2),
     small-font-cols: (3,),
-    inset: (x: 0.7em, y: 0.95em),
+    inset: (x: 0.7em, y: 0.75em),
     table.header(
       align(left)[Bacterial Species],
       [Result],
       [Reference],
       align(left)[Role / Gut & Host Function / Impact],
     ),
-    ..for bacteria in report.probiotic_bacterial_members {
+    ..for (bacteria, impact) in report.probiotic_bacterial_members.zip(impacts) {
       (
         [_#bacteria.name _],
         text(fill: rank-to-color(bacteria.result.rank))[*#numfmt(bacteria.result.value)*],
-        display-range(bacteria.reference_range),
-        [#bacteria.impact],
+        bacteria.logic_operator,
+        [#impact],
       )
     },
   )

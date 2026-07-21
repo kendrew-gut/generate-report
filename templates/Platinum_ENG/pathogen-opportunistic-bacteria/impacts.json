@@ -1,0 +1,41 @@
+{
+    "pathogens": [
+        "Invades intestinal epithelium, disrupts mucosal barrier and triggers inflammatory diarrhea.",
+        "Enterotoxin that damages intestinal epithelium, increases permeability and drives inflammatory diarrhea.",
+        "Potent cytotoxin that disrupts epithelial tight junctions and causes severe colonic inflammation.",
+        "Produces Shiga toxins and endotoxin (LPS) that damage intestinal lining and can cause hemorrhagic colitis.",
+        "Highly virulent EHEC strain producing Shiga toxins linked to bloody diarrhea and kidney complications.",
+        "Invades intestinal epithelial cells causing tissue destruction, inflammation and dysentery-like symptoms.",
+        "Produces heat-labile and heat-stable enterotoxins that stimulate intestinal fluid secretion leading to watery diarrhea.",
+        "Releases potent Shiga toxins that inhibit host protein synthesis and damage intestinal and vascular tissues.",
+        "Invades intestinal mucosa and Peyer's patches, triggering strong inflammatory immune responses via endotoxin (LPS)",
+        "Produces cholera toxin that drives massive electrolyte and water secretion from the intestine.",
+        "Invades lymphoid tissues of the gut and can mimic inflammatory bowel disease symptoms.",
+        "Colonizes gastric mucosa, alters acid balance and promotes chronic inflammation affecting the upper GI environment."
+    ],
+    "dysbiotic_overgrowth_bacteria": [
+        "Spore-forming environmental bacteria that can modulate microbiome balance; overgrowth may reflect microbial imbalance or transient colonization",
+        "Spore-forming environmental bacteria that can modulate microbiome balance; overgrowth may reflect microbial imbalance or transient colonization",
+        "Gut commensal capable of biofilm formation and antimicrobial resistance; elevated levels may indicate dysbiosis and opportunistic infection risk. ",
+        "Gut commensal capable of biofilm formation and antimicrobial resistance; elevated levels may indicate dysbiosis and opportunistic infection risk. ",
+        "Environmental opportunistic bacteria capable of toxin production and biofilm formation, often emerging in disrupted microbiomes.",
+        "Environmental opportunistic bacteria capable of toxin production and biofilm formation, often emerging in disrupted microbiomes.",
+        "Sulfite-reducing bacterium associated with bile acid metabolism and inflammatory responses when enriched in the gut microbiome.",
+        "Opportunistic Gram-positive bacteria that can colonize the gut during dysbiosis and contribute to toxin production and inflammatory responses.",
+        "Opportunistic pathogen capable of toxin production and epithelial barrier disruption; intestinal colonization may occur when normal microbiota are depleted.",
+        "Lactic acid-producing commensals that can expand during microbial imbalance; elevated levels are associated with dysbiosis and inflammatory gut conditions."
+    ],
+    "commensal_overgrowth_inflammatory_related": [
+        "Sulfate-reducing bacteria that produce hydrogen sulfide, which can damage intestinal epithelium and promote inflammation when overgrown.",
+        "Methane-producing archaea that influence gut fermentation and motility; elevated levels are linked with slower intestinal transit.",
+        "Opportunistic Enterobacteriaceae that may expand during dysbiosis and contribute to gut inflammation and microbial imbalance through endotoxin (LPS) production",
+        "Opportunistic Gram-negative bacterium associated with intestinal inflammation and dysbiosis when present in elevated amounts.",
+        "Opportunistic Enterobacteriaceae capable of endotoxin (LPS) production; expansion is associated with inflammatory gut conditions.",
+        "Pathobiont capable of mucosal colonization and inflammatory activation, particularly during microbiome disruption.",
+        "Environmental opportunistic bacterium occasionally colonizing the gut and associated with chronic intestinal inflammation in susceptible hosts.",
+        "Urease-producing opportunistic bacteria that may contribute to intestinal dysbiosis and inflammatory signaling when overrepresented.",
+        "Opportunistic pathobiont producing endotoxins (LPS) and virulence factors that may disrupt gut microbial balance.",
+        "Anaerobic bacteria linked with inflammatory signaling and mucosal barrier disruption when enriched in the gut microbiome.",
+        "Fiber-associated commensals involved in carbohydrate fermentation; elevated levels may reflect diet-driven shifts or inflammatory microbiome states."
+    ]
+}

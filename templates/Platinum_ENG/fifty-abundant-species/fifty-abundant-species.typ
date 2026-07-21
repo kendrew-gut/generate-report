@@ -13,7 +13,7 @@
       [Relative Abundance (%)],
     ),
     ..for (i, bacteria) in report.fifty_abundant_species.enumerate() {
-      ([#(i+1)], [_#bacteria.species _], [#bacteria.abundance])
+      ([#(i+1)], [_#bacteria.species _], [#strfmt("{:.2}", bacteria.abundance)])
     },
   ))
 ]

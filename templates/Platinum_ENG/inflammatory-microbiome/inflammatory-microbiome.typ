@@ -1,5 +1,7 @@
 #import "../lib.typ": *
 
+#let interpretations = json("interpretations.json")
+
 #let inflammatory-microbiome(report) = page(background: standard-page-background(
   section-header: [Inflammatory Microbiome],
 ))[
@@ -15,18 +17,23 @@
     left-align-cols: (0, 1),
     tnum-cols: (2, 3),
     small-font-cols: (1,),
+    inset: (x: 0.7em, y: 0.9em),
     table.header(
       align(left)[Bacterial Species],
       align(left)[Interpretation],
       [Result],
       [Reference],
     ),
-    ..for (i, bacteria) in report.inflammatory_microbiome.slice(0, 11).enumerate() {
+    ..for (i, (bacteria, interpretation)) in report
+      .inflammatory_microbiome
+      .slice(0, 11)
+      .zip(interpretations.bacteria)
+      .enumerate() {
       (
         [_#bacteria.species#if range(1, 7).contains(i) [\*]_],
-        [#bacteria.interpretation],
+        [#interpretation],
         text(fill: rank-to-color(bacteria.result.rank))[*#numfmt(bacteria.result.value)*],
-        [#display-range(bacteria.reference_range)],
+        [#bacteria.logic_operator],
       )
     },
   )
@@ -42,12 +49,12 @@
       [Result],
       [Reference],
     ),
-    ..for bacteria in report.inflammatory_microbiome.slice(11) {
+    ..for (bacteria, interpretation) in report.inflammatory_microbiome.slice(11).zip(interpretations.fungi) {
       (
         [_#bacteria.species _],
-        [#bacteria.interpretation],
-        text(fill: rank-to-color(bacteria.result.rank),)[*#numfmt(bacteria.result.value)*],
-        [#display-range(bacteria.reference_range)],
+        [#interpretation],
+        text(fill: rank-to-color(bacteria.result.rank))[*#numfmt(bacteria.result.value)*],
+        [#bacteria.logic_operator],
       )
     },
   )

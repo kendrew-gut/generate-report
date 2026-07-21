@@ -1,5 +1,7 @@
 #import "../lib.typ": *
 
+#let impact = json("impact.json")
+
 #let commensal-keystone-bacteria(report) = page(background: standard-page-background(
   section-header: [Commensal and Keystone Bacteria],
 ))[
@@ -13,16 +15,16 @@
       [Result],
       [Reference],
       align(left)[Role / Gut & Host Function / Impact],
-      [Retest Interval\*]
+      [Retest Interval\*],
     ),
-    ..for bacteria in report.commensal_keystone_bacteria {
+    ..for (bacteria, impact) in report.commensal_keystone_bacteria.zip(impact) {
       (
         [_#bacteria.name _],
-        text(fill: green)[*#numfmt(bacteria.result)*],
-        display-range(bacteria.reference_range),
-        [#bacteria.impact],
-        [#bacteria.retest_interval]
+        text(fill: rank-to-color(bacteria.result.rank))[*#numfmt(bacteria.result.value)*],
+        bacteria.logic_operator,
+        [#impact],
+        [#rank-to-retest-interval(bacteria.result.rank)],
       )
-    }
+    },
   )
 ]

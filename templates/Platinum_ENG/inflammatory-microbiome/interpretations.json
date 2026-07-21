@@ -1,0 +1,18 @@
+{
+    "bacteria": [
+        "Gram-negative anaerobe linked to intestinal inflammation and dysbiosis",
+        "Opportunistic Gram-negative pathobiont capable of endotoxin (LPS) and histamin production that may promote inflammatory signalling and gut microbial imbalance.",
+        "Opportunistic Gram-negative pathobiont capable of endotoxin (LPS) production that may promote inflammatory signalling and gut microbial imbalance.",
+        "Opportunistic bacterium associated with toxin production and epithelial irritation when overrepresented in the gut microbiome.",
+        "Opportunistic Enterobacteriaceae that may expand during dysbiosis and contribute to inflammatory signalling in the intestinal microbiome.",
+        "Urease-producing opportunistic pathobiont that may disrupt microbial balance and contribute to inflammatory gut environments.",
+        "Opportunistic Enterobacteriaceae known for histamine production associated with inflammatory dysbiosis and microbial imbalance",
+        "Opportunistic pathogen capable of biofilm formation and toxin production, associated with inflammatory dysbiosis and infection risk",
+        "Environmental opportunistic bacterium capable of toxin production and biofilm formation, often appearing in disrupted or inflammatory microbiomes.",
+        "Mucin-degrading bacterium associated with mucus barrier disruption and inflammatory dysbiosis",
+        "Gastric mucosa-colonising bacterium associated with chronic gastric inflammation and ulcer disease"
+    ],
+    "fungi": [
+        "Opportunistic yeast associated with fungal dysbiosis, mucosal irritation, and immune activation"
+    ]
+}

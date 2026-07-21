@@ -1,20 +1,18 @@
 #import "@preview/hydra:0.6.3": anchor, hydra
 #import "@preview/oxifmt:1.0.0": strfmt
 
-#let numfmt(num) = strfmt("{:.2E}", num) //number format for pathogen and opportunistic bacteria
-#let numfmt_i(num) = {
-  if num < 1E-6 or num > 1E6 {
-    return strfmt("{:.2E}", num)
+#let is-long-num(num) = num < 1e-5 or num >= 1e6 or {
+  let num = str(num)
+  if num.contains(".") {
+    num.split(".").at(1).len() > 6
+  } else {
+    num.len() > 6
+  }
+}
+#let numfmt(num) = {
+  if is-long-num(num) {
+    return strfmt("{:.2e}", num)
   } else { num }
-} //number format for intestinal health markers
-#let within-range(range, num) = {
-  if (range.lower != none and num < range.lower) {
-    return false
-  }
-  if (range.upper != none and num > range.upper) {
-    return false
-  }
-  true
 }
 
 #let date-format = "[day]/[month]/[year]"
@@ -26,22 +24,25 @@
 #let red = rgb("de4d46")
 #let yellow = yellow.darken(5%)
 #let grey = rgb("595959")
-#let pie-palette = ( 
-    rgb("#bfd8ec"), 
-    rgb("#a0c7e5"),
-    rgb("#91b6ef"), 
-    rgb("#7bb7de"), 
-    rgb("#7a9ec2"),  
-    rgb("#5d82e2"),
-    rgb("#638cca"),  
-    rgb("#077098"),
-  )
+#let pie-palette = (
+  rgb("#bfd8ec"),
+  rgb("#a0c7e5"),
+  rgb("#91b6ef"),
+  rgb("#7bb7de"),
+  rgb("#7a9ec2"),
+  rgb("#5d82e2"),
+  rgb("#638cca"),
+  rgb("#077098"),
+)
 
 #let style(body) = {
   show title: set text(size: 28pt, weight: "medium", tracking: 1.2pt)
   show heading.where(level: 1): set text(size: 18pt, weight: "extrabold", fill: rgb(22, 74, 100))
   set heading()
-  set text(size: 11pt, font: "Inter", weight: "regular")
+  set text(size: 11pt, font: "Inter", weight: "regular", features: ("calt",))
+  show math.equation: set text(font: "Inter")
+  show ">=": math.gt.eq
+  show "<=": math.lt.eq
   body
 }
 
@@ -103,7 +104,7 @@
   set table(fill: (x, y) => if y == 0 { primary-container }, inset: inset, stroke: grey.lighten(60%))
   show table.cell: it => if it.y > 0 { text(size: 10pt, it) } else { it }
   show table.cell.where(y: 0): strong
-  show table.cell: it => align(horizon + center, it)
+  show table.cell: it => align(horizon + center, text(it))
 
   table(
     columns: columns,
@@ -111,11 +112,12 @@
   )
 }
 
-#let display-range(range) = align(center + horizon, if range.lower == none {
-  [<#numfmt(range.upper)]
-} else if range.upper == none {
-  [>#numfmt(range.lower)]
-} else {
-  pad(left: 1em, box(align(left)[#numfmt(range.lower)-\ #numfmt(range.upper)]))
-})
+#let rank-to-retest-interval(rank) = if rank == 2 { [8-12 weeks] } else if rank == 3 { [6-8 weeks] }
+#let detected-to-retest-interval(detected) = if detected { [6-8 weeks] }
 #let rank-to-color(rank) = if rank == 2 { yellow } else if rank == 3 { red } else { green }
+#let detected-to-color(detected) = if detected { red } else { green }
+#let display-rating(rating) = if rating == 1 { [Above reference] } else if rating == 0 { [Normal] } else if (
+  rating == -1
+) {
+  [Below reference]
+}
