@@ -10,7 +10,7 @@
     left-align-cols: (0, 3),
     tnum-cols: (1, 2),
     small-font-cols: (3,),
-    inset: (x: 0.7em, y: 0.75em),
+    inset: (x: 0.7em, y: 0.9em),
     table.header(
       align(left)[Bacterial Species],
       [Result],

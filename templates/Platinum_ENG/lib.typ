@@ -1,14 +1,18 @@
 #import "@preview/hydra:0.6.3": anchor, hydra
 #import "@preview/oxifmt:1.0.0": strfmt
 
-#let is-long-num(num) = num < 1e-5 or num >= 1e6 or {
-  let num = str(num)
-  if num.contains(".") {
-    num.split(".").at(1).len() > 6
-  } else {
-    num.len() > 6
-  }
-}
+#let is-long-num(num) = (
+  num < 1e-5
+    or num >= 1e6
+    or {
+      let num = str(num)
+      if num.contains(".") {
+        num.split(".").at(1).len() > 6
+      } else {
+        num.len() > 6
+      }
+    }
+)
 #let numfmt(num) = {
   if is-long-num(num) {
     return strfmt("{:.2e}", num)
@@ -43,28 +47,29 @@
   show math.equation: set text(font: "Inter")
   show ">=": math.gt.eq
   show "<=": math.lt.eq
+  set page(paper: "a4")
   body
 }
 
-#let standard-page-background(section-header: none) = {
+#let standard-page-background(section-header: none) = context {
   image("images/background-pattern.svg")
-  place(top, context {
-    let header = image("images/header-background.svg")
+  place(top, {
+    let header = image("images/header-background.png")
     box(height: measure(header).height, {
       header
       place(horizon, pad(top: 1em, left: 2em)[= #section-header])
     })
     place(top + end, pad(top: 0.6em, right: 2em, image("images/gutolution-logo-header.svg", width: 10em)))
   })
+  place(bottom + end, pad(right: 1.5cm, bottom: 0.55cm, text(size: 15pt, fill: primary.darken(15%))[#counter(page).display()]))
 }
 
 #let page-style = {
   let f(it) = {
     set page(
       header: anchor(),
-      margin: (top: 3cm, x: 1.2cm, bottom: 1.2cm),
-      numbering: "1",
       number-align: end,
+      margin: (top: 3cm, x: 1cm, bottom: 1.2cm),
     )
     set text(features: ("cv05",))
     it

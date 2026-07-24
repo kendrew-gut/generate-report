@@ -2,8 +2,9 @@
 
 #let front-cover(report) = page(
   background: image("../images/background-pattern.svg"),
-  margin: (x: 1cm, top: 1cm, bottom: 0cm),
-  align(center)[
+  margin: (x: 0cm, top: 1cm, bottom: 0cm),
+)[
+  #align(center)[
     #image("images/gutolution-logo-tagline.svg")
     #v(1em)
     #box(title()) // Hack: remove space before title
@@ -35,5 +36,5 @@
       GUTolution Limited | (+852) 5726 2664 (WhatsApp)\
       info\@gutolution.com | www.gutolution.com
     ]
-  ],
-)
+  ]
+]
