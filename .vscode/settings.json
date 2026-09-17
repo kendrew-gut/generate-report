@@ -1,8 +1,11 @@
 {
     "tinymist.fontPaths": [
+        
+
         "${workspaceFolder}/templates/Gleneagles_ENG/fonts/Mulish",
         "${workspaceFolder}/templates/Gleneagles_ENG/fonts/Noto_Sans_TC",
-        "${workspaceFolder}/templates/Platinum_ENG/fonts/Inter-4.0"
+        "${workspaceFolder}/templates/Platinum_ENG/fonts/Inter-4.0",
+        "${workspaceFolder}/templates/HKEZC_CN/fonts/Noto_Serif_HK"
     ],
     "[typst]": {
         "editor.suggestOnTriggerCharacters": true,
