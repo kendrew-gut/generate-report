@@ -5,6 +5,7 @@
 #import "sections/core-bacteria/core-bacteria.typ": core-bacteria
 #import "sections/harmful-bacteria/harmful-bacteria.typ": harmful-bacteria
 #import "sections/probiotics/probiotics.typ": probiotics
+#import "sections/parasites/parasites.typ": parasites
 
 #set document(
   title: [微生態全面測試--濕疹及過敏項目],
@@ -32,7 +33,8 @@
   integrated-analysis,
   core-bacteria,
   harmful-bacteria,
-  probiotics
+  probiotics,
+  parasites
 )
 
 #for (i, section) in sections.enumerate() {

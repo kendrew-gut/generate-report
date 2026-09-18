@@ -27,10 +27,10 @@
     zh-HK: "核心菌",
   ),
   id-label: "CB"
-) = page(margin: (x: 0pt), header: pad(x: 1cm, page-header(report)))[
+) = page(margin: (x: 0pt), header: pad(x: 1.1cm, page-header(report)), footer: pad(x: 1.1cm, page-footer))[
   #set par(spacing: 0.2cm)
   #let num_bacteria = data.len()
-  #pad(x: 1cm, heading(level: 1, section-heading))
+  #pad(x: 1.1cm, heading(level: 1, section-heading))
   #set text(weight: 500)
   #table(
     columns: (10%, 40%, 50%),
@@ -50,7 +50,7 @@
     },
   )
   #v(0.7cm)
-  #pad(x: 1cm, {
+  #pad(x: 1.1cm, {
     rect(width: 100%, stroke: primary.darken(20%) + 1.3pt, inset: 0.7cm, {
       align(center, text(
         fill: primary.darken(30%),

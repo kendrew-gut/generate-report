@@ -35,11 +35,13 @@
 #let cyan = rgb("329BA9")
 #let bluegray = rgb("516978")
 
-#let pill(body) = box(
-  radius: 50%,
-  fill: primary,
-  inset: (y: 1em, x: 0.5em),
-  body,
+#let pill(radius: 50%, inset: (y: 1em, x: 0.5em), fill: primary, text-fill: white, width: auto, height: auto, body) = box(
+  radius: radius,
+  fill: fill,
+  inset: inset,
+  width: width,
+  height: height,
+  text(fill: text-fill, body),
 )
 
 #let style(body) = {
@@ -130,10 +132,10 @@
     fill: gradient.linear(
       dir: ttb,
       bluegray.transparentize(100%),
-      bluegray
+      bluegray,
     ),
     (0pt, 0pt),
     (width, 0pt),
-    (width / 2, height)
+    (width / 2, height),
   ))
 }
